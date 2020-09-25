@@ -16,7 +16,7 @@
   <body>
     <nav>
       <ul id="nav-list">
-        <li><img src="./images/logo.svg" class="rounded-circle"></li>
+        <li><img src="./images/logo.svg" class="rounded-circle" id="myLogo"></li>
         <li><a href="./index.html"><i class="fas fa-home"></i></a></li>
         <li><a href="./about.html"><i class="fas fa-user"></i></a></li>
         <li><a href="#"></a><i class="fas fa-cog"></i></li>
@@ -26,8 +26,17 @@
       </ul>
     </nav>
 
+    <main data-router-wrapper>
+      <section data-router-view="home" class="home" id="switch_view">
+        <div class="home-content">
+          <img src="./images/lake.jpg" alt="">
+        </div>
+      </section>
+    </main>
+
 
 
 
   </body>
+  <script src="./js/index.js"></script>
 </html>
