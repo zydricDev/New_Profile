@@ -1,0 +1,33 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+html nav, body nav {
+  min-height: 100%;
+  width: 5vw;
+  background-color: #1414;
+}
+
+#nav-list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+#nav-list li {
+  margin-top: 50px;
+  list-style: none;
+}
+#nav-list a {
+  text-decoration: none;
+}
+#nav-list img {
+  height: 50px;
+  width: 50px;
+}
+
+/*# sourceMappingURL=/style.6b54f5b7.css.map */
