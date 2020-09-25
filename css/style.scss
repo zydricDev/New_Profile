@@ -6,17 +6,20 @@
 
 html, body{
   height: 100%;
-
+  //background: linear-gradient(to bottom, #ff6666 0%, #ccff66 100%);
   nav{
+    position: fixed;
+    z-index: 25;
     min-height: 100%;
     width: 5vw;
-    background-color: #1414;
+    background-color: white;
   }
 }
 
 #nav-list{
   align-items: center;
   display: flex;
+
   flex-direction: column;
 
   li{
@@ -29,6 +32,21 @@ html, body{
   img{
     height: 50px;
     width: 50px;
-  
+
+  }
+}
+.home-content{
+  height: 100%;
+  width: 100%;
+  background-color: linear-gradient(to bottom, #ff6666 0%, #ccff66 100%);
+}
+.home, .about{
+  position: absolute;
+  z-index: 1;
+  img{
+    
+    height: 100vh;
+    width: 100vw;
+
   }
 }
