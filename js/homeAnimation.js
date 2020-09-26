@@ -1,10 +1,15 @@
 import Highway from '@dogstudio/highway';
 import {TimelineLite} from 'gsap';
 
-class Setup extends Highway.Renderer{
+class Animation_Home extends Highway.Renderer{
 
-    onEnterCompleted(){
+    onEnter(){
+      
+      let view = document.getElementById('switch_view');
+      let script = document.createElement('script');
 
+      script.setAttribute('src', '/canvasHome.40cfd92c.js');
+      view.appendChild(script);
     }
 
     onLeaveCompleted(){
@@ -17,7 +22,8 @@ class Setup extends Highway.Renderer{
         }});
       }
 
+
     }
 }
 
-export default Setup;
+export default Animation_Home;

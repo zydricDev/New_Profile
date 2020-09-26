@@ -5898,6 +5898,7 @@ var Sweep = /*#__PURE__*/function (_Highway$Transition) {
           done = _ref.done;
       var tl = new _gsap.TimelineLite();
       var myLogo = from.parentNode.parentNode.querySelectorAll("#myLogo");
+      var loadScreen = to.querySelectorAll('#black-screen');
       tl.fromTo(myLogo, 1, {
         opacity: 1,
         transform: "translate(0px,0px)"
@@ -5908,16 +5909,29 @@ var Sweep = /*#__PURE__*/function (_Highway$Transition) {
         left: '-100%'
       }, {
         left: '0%'
-      }, '-=1').fromTo(to, 1, {
-        backgroundColor: 'black'
+      }, '-=1').fromTo(loadScreen, 1, {
+        opacity: 1,
+        display: "block",
+        backgroundColor: 'black',
+        left: '0%'
       }, {
-        backgroundColor: 'black'
+        opacity: 1,
+        display: "block",
+        backgroundColor: 'black',
+        left: '100%',
+        onComplete: function onComplete() {
+          document.getElementById('black-screen').remove();
+        }
+      }).fromTo(to, 1, {
+        backgroundColor: 'white'
+      }, {
+        backgroundColor: 'white'
       }, '-=1') //.fromTo(myLogo, 1,{width: 50, height: 50},{width: 100, height: 100})
       .fromTo(myLogo, 0.5, {
         transform: "translate(800px,350px)"
       }, {
         transform: "translate(1600px,350px)"
-      }).fromTo(myLogo, 0.5, {
+      }, '-=1').fromTo(myLogo, 0.5, {
         opacity: 0,
         transform: "translate(0px,0px)"
       }, {
@@ -5926,11 +5940,7 @@ var Sweep = /*#__PURE__*/function (_Highway$Transition) {
         onComplete: function onComplete() {
           done();
         }
-      }).fromTo(to.children[0], 2, {
-        opacity: 0
-      }, {
-        opacity: 1
-      });
+      }); //.fromTo(to.children[0], 2, {opacity: 0}, {opacity: 1})
     }
   }, {
     key: "out",
@@ -5998,13 +6008,104 @@ var Setup = /*#__PURE__*/function (_Highway$Renderer) {
     value: function onEnterCompleted() {}
   }, {
     key: "onLeaveCompleted",
-    value: function onLeaveCompleted() {}
+    value: function onLeaveCompleted() {
+      if (document.getElementById('switch_view') !== null) {
+        var tl = new _gsap.TimelineLite();
+        var element = document.getElementById('switch_view');
+        tl.fromTo(element.children[0], 1, {
+          opacity: 1
+        }, {
+          opacity: 1,
+          onComplete: function onComplete() {
+            element.remove();
+          }
+        });
+      }
+    }
   }]);
 
   return Setup;
 }(_highway.default.Renderer);
 
 var _default = Setup;
+exports.default = _default;
+},{"@dogstudio/highway":"node_modules/@dogstudio/highway/build/highway.module.js","gsap":"node_modules/gsap/index.js"}],"js/homeAnimation.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _highway = _interopRequireDefault(require("@dogstudio/highway"));
+
+var _gsap = require("gsap");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var Animation_Home = /*#__PURE__*/function (_Highway$Renderer) {
+  _inherits(Animation_Home, _Highway$Renderer);
+
+  var _super = _createSuper(Animation_Home);
+
+  function Animation_Home() {
+    _classCallCheck(this, Animation_Home);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Animation_Home, [{
+    key: "onEnter",
+    value: function onEnter() {
+      var view = document.getElementById('switch_view');
+      var script = document.createElement('script');
+      script.setAttribute('src', '/canvasHome.40cfd92c.js');
+      view.appendChild(script);
+    }
+  }, {
+    key: "onLeaveCompleted",
+    value: function onLeaveCompleted() {
+      if (document.getElementById('switch_view') !== null) {
+        var tl = new _gsap.TimelineLite();
+        var element = document.getElementById('switch_view');
+        tl.fromTo(element.children[0], 1, {
+          opacity: 1
+        }, {
+          opacity: 1,
+          onComplete: function onComplete() {
+            element.remove();
+          }
+        });
+      }
+    }
+  }]);
+
+  return Animation_Home;
+}(_highway.default.Renderer);
+
+var _default = Animation_Home;
 exports.default = _default;
 },{"@dogstudio/highway":"node_modules/@dogstudio/highway/build/highway.module.js","gsap":"node_modules/gsap/index.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
@@ -6015,18 +6116,21 @@ var _transition = _interopRequireDefault(require("./transition"));
 
 var _startup = _interopRequireDefault(require("./startup"));
 
+var _homeAnimation = _interopRequireDefault(require("./homeAnimation"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var H = new _highway.default.Core({
   renderers: {
-    index: _startup.default,
+    // Only one renderer at a time...
+    home: _homeAnimation.default,
     about: _startup.default
   },
   transitions: {
     default: _transition.default
   }
 });
-},{"@dogstudio/highway":"node_modules/@dogstudio/highway/build/highway.module.js","./transition":"js/transition.js","./startup":"js/startup.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@dogstudio/highway":"node_modules/@dogstudio/highway/build/highway.module.js","./transition":"js/transition.js","./startup":"js/startup.js","./homeAnimation":"js/homeAnimation.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -6054,7 +6158,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59685" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61279" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
