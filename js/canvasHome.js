@@ -247,7 +247,7 @@ c.canvas.addEventListener('mousemove', function(event){
    mousex = event.clientX - c.canvas.offsetLeft - 100,
    mousey = event.clientY - c.canvas.offsetTop - 100
 
-  document.getElementById('status').innerHTML = mousex +" | "+ mousey
+   //document.getElementById('status').innerHTML = mousex +" | "+ mousey
 })
 
 

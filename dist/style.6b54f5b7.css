@@ -6,13 +6,14 @@
 
 html, body {
   height: 100%;
+  overflow: hidden;
 }
 html nav, body nav {
   position: fixed;
   z-index: 25;
   min-height: 100%;
   width: 5vw;
-  background-color: white;
+  background: linear-gradient(to bottom left, #66ccff 16%, #ff6699 84%);
 }
 
 #myLogo {
@@ -43,10 +44,16 @@ html nav, body nav {
   width: 100%;
   background-color: linear-gradient(to bottom, #ff6666 0%, #ccff66 100%);
 }
+.home-content canvas {
+  background-color: white;
+}
 
 .home, .about {
   position: absolute;
   z-index: 1;
+  background-color: grey;
+  height: 100vh;
+  width: 100vw;
 }
 .home .black-screen, .about .black-screen {
   height: 100vh;

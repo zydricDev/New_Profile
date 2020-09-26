@@ -4,13 +4,16 @@ import {TimelineLite} from 'gsap';
 class Animation_Home extends Highway.Renderer{
 
     onEnter(){
+      const tl= new TimelineLite();
       
-      let view = document.getElementById('switch_view');
       let script = document.createElement('script');
-
+      let view = document.getElementById('switch_view');
       script.setAttribute('src', '/canvasHome.40cfd92c.js');
       view.appendChild(script);
-    }
+      }
+
+
+
 
     onLeaveCompleted(){
 

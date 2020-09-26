@@ -5899,6 +5899,7 @@ var Sweep = /*#__PURE__*/function (_Highway$Transition) {
       var tl = new _gsap.TimelineLite();
       var myLogo = from.parentNode.parentNode.querySelectorAll("#myLogo");
       var loadScreen = to.querySelectorAll('#black-screen');
+      var content = to.querySelectorAll('#content');
       tl.fromTo(myLogo, 1, {
         opacity: 1,
         transform: "translate(0px,0px)"
@@ -5922,12 +5923,7 @@ var Sweep = /*#__PURE__*/function (_Highway$Transition) {
         onComplete: function onComplete() {
           document.getElementById('black-screen').remove();
         }
-      }).fromTo(to, 1, {
-        backgroundColor: 'white'
-      }, {
-        backgroundColor: 'white'
-      }, '-=1') //.fromTo(myLogo, 1,{width: 50, height: 50},{width: 100, height: 100})
-      .fromTo(myLogo, 0.5, {
+      }).fromTo(myLogo, 0.5, {
         transform: "translate(800px,350px)"
       }, {
         transform: "translate(1600px,350px)"
@@ -5947,6 +5943,12 @@ var Sweep = /*#__PURE__*/function (_Highway$Transition) {
     value: function out(_ref2) {
       var from = _ref2.from,
           done = _ref2.done;
+      var tl = new _gsap.TimelineLite();
+      tl.fromTo(from.querySelectorAll('#content'), 0.5, {
+        transform: "scale(1,1)"
+      }, {
+        transform: "scale(0.8,0.8)"
+      });
       done();
     }
   }]);
@@ -6079,8 +6081,9 @@ var Animation_Home = /*#__PURE__*/function (_Highway$Renderer) {
   _createClass(Animation_Home, [{
     key: "onEnter",
     value: function onEnter() {
-      var view = document.getElementById('switch_view');
+      var tl = new _gsap.TimelineLite();
       var script = document.createElement('script');
+      var view = document.getElementById('switch_view');
       script.setAttribute('src', '/canvasHome.40cfd92c.js');
       view.appendChild(script);
     }
@@ -6158,7 +6161,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61279" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49616" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
