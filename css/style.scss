@@ -15,6 +15,11 @@ html, body{
     background-color: white;
   }
 }
+#myLogo{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
 
 #nav-list{
   align-items: center;
@@ -43,8 +48,18 @@ html, body{
 .home, .about{
   position: absolute;
   z-index: 1;
+
+  .black-screen{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 50;
+    background-color: white;
+    opacity: 0;
+    display: none;
+  }
   img{
-    
+
     height: 100vh;
     width: 100vw;
 

@@ -15,6 +15,12 @@ html nav, body nav {
   background-color: white;
 }
 
+#myLogo {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
 #nav-list {
   align-items: center;
   display: flex;
@@ -41,6 +47,15 @@ html nav, body nav {
 .home, .about {
   position: absolute;
   z-index: 1;
+}
+.home .black-screen, .about .black-screen {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 50;
+  background-color: white;
+  opacity: 0;
+  display: none;
 }
 .home img, .about img {
   height: 100vh;
