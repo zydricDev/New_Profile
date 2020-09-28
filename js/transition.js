@@ -11,11 +11,12 @@ class Sweep extends Highway.Transition{
 
     tl.fromTo(myLogo, 1,{opacity: 1, transform: "translate(0px,0px)"},{opacity: 1, transform: "translate(800px,350px)"})
     .fromTo(to, 1,{left: '-100%'},{left: '0%'},'-=1')
+
     .fromTo(loadScreen, 1,{opacity: 1, display: "block", backgroundColor: 'black', left:'0%'},{opacity: 1, display: "block", backgroundColor: 'black', left:'100%', onComplete: function(){
       document.getElementById('black-screen').remove();
     }})
-    
-    .fromTo(myLogo, 0.5,{transform: "translate(800px,350px)"},{transform: "translate(1600px,350px)"}, '-=1')
+    .fromTo(content, 1,{transform: "scale(0.8,0.8)"}, {transform: "scale(1,1)"}, '-=0.1')
+    .fromTo(myLogo, 0.5,{transform: "translate(800px,350px)"},{transform: "translate(1600px,350px)"}, '-=1.9')
 
 
     .fromTo(myLogo, 0.5, {opacity: 0, transform: "translate(0px,0px)"},{opacity: 1, transform: "translate(0px,0px)", onComplete: function(){
