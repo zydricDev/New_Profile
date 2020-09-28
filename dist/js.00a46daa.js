@@ -5923,11 +5923,15 @@ var Sweep = /*#__PURE__*/function (_Highway$Transition) {
         onComplete: function onComplete() {
           document.getElementById('black-screen').remove();
         }
-      }).fromTo(myLogo, 0.5, {
+      }).fromTo(content, 1, {
+        transform: "scale(0.8,0.8)"
+      }, {
+        transform: "scale(1,1)"
+      }, '-=0.1').fromTo(myLogo, 0.5, {
         transform: "translate(800px,350px)"
       }, {
         transform: "translate(1600px,350px)"
-      }, '-=1').fromTo(myLogo, 0.5, {
+      }, '-=1.9').fromTo(myLogo, 0.5, {
         opacity: 0,
         transform: "translate(0px,0px)"
       }, {
@@ -6161,7 +6165,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49616" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55584" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
