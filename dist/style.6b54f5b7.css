@@ -12,7 +12,7 @@ html nav, body nav {
   position: fixed;
   z-index: 25;
   min-height: 100%;
-  width: 5vw;
+  width: 80px;
   background: linear-gradient(to bottom left, #66ccff 16%, #ff6699 84%);
 }
 
@@ -40,22 +40,43 @@ html nav, body nav {
 }
 
 .home-content {
-  height: 100%;
-  width: 100%;
   background-color: linear-gradient(to bottom, #ff6666 0%, #ccff66 100%);
 }
 .home-content canvas {
   background-color: white;
 }
 
-.home, .about {
-  position: absolute;
-  z-index: 1;
-  background-color: grey;
+.about-content img {
   height: 100vh;
   width: 100vw;
 }
-.home .black-screen, .about .black-screen {
+
+.skill-content {
+  font-family: "Bungee", cursive;
+}
+.skill-content canvas {
+  transform: translate(400px, 30px);
+}
+.skill-content img {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+}
+.skill-content .desc {
+  transform: translate(200px, 100px);
+  color: white;
+  position: absolute;
+}
+
+.home, .about, .skill {
+  position: absolute;
+  z-index: 1;
+  background-color: grey;
+  height: 100%;
+  width: 100%;
+}
+.home .black-screen, .about .black-screen, .skill .black-screen {
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -63,10 +84,6 @@ html nav, body nav {
   background-color: white;
   opacity: 0;
   display: none;
-}
-.home img, .about img {
-  height: 100vh;
-  width: 100vw;
 }
 
 /*# sourceMappingURL=/style.6b54f5b7.css.map */
