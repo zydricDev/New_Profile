@@ -117,296 +117,158 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/canvasHome.js":[function(require,module,exports) {
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+})({"js/cube.js":[function(require,module,exports) {
+var Point2D = function Point2D(x, y) {
+  this.x = x;
+  this.y = y;
+};
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+var Point3D = function Point3D(x, y, z) {
+  this.x = x;
+  this.y = y;
+  this.z = z;
+};
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+var Cube = function Cube(x, y, z, size) {
+  Point3D.call(this, x, y, z); //inheritance from cube
 
-var canvas = document.querySelector('#canvas');
-var c = canvas.getContext('2d');
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+  size *= 0.5; //this is the same
 
-var Pop_Words = /*#__PURE__*/function () {
-  function Pop_Words(ltr, x, y, opac, isLast, size, doResize, drawn, mouseX, mouseY) {
-    _classCallCheck(this, Pop_Words);
-
-    this.ltr = ltr;
-    this.x = x;
-    this.y = y;
-    this.opac = opac;
-    this.isLast = isLast;
-    this.size = size;
-    this.doResize = doResize;
-    this.drawn = drawn;
-    this.mouseX = mouseX;
-    this.mouseY = mouseY;
-  }
-
-  _createClass(Pop_Words, [{
-    key: "draw",
-    value: function draw() {
-      //&& this.opacDelay >= 0
-      if (this.opac < 1) {
-        this.opac += 0.2;
-      }
-
-      if (this.opac >= 1 && this.drawn == false) {
-        this.doResize = false;
-        this.drawn = true;
-      }
-
-      c.globalAlpha = this.opac;
-      c.font = this.size + 'px Bungee';
-
-      if (this.drawn == false && this.opac < 0.5) {
-        this.size += 4;
-      }
-
-      if (this.drawn == false && this.opac >= 0.5) {
-        this.size -= 4;
-      }
-
-      if (this.mouseX >= this.x && this.mouseX <= this.x + 20 && this.mouseY >= this.y - 20 && this.mouseY <= this.y && this.drawn == true && this.size < 40) {
-        this.size += 10;
-      }
-
-      if ((this.mouseX < this.x || this.mouseX > this.x + 20) &&
-      /*
-      (this.mouseY < this.y-20 ||
-      this.mouseY > this.y) &&*/
-      this.drawn == true && this.size > 30) {
-        this.size -= 2;
-      }
-      /*if(this.size >= 32){
-        this.size -=2
-      }*/
+  this.vertices = [new Point3D(x - size, y - size, z - size), new Point3D(x + size, y - size, z - size), new Point3D(x + size, y + size, z - size), new Point3D(x - size, y + size, z - size), new Point3D(x - size, y - size, z + size), new Point3D(x + size, y - size, z + size), new Point3D(x + size, y + size, z + size), new Point3D(x - size, y + size, z + size)];
+  this.faces = [[0, 1, 2, 3], [0, 4, 5, 1], [1, 5, 6, 2], [3, 2, 6, 7], [0, 3, 7, 4], [4, 7, 6, 5]];
+}; //cube spinning V
 
 
-      if (this.size >= 40) {
-        c.fillStyle = "red";
-      }
+Cube.prototype = {
+  rotateX: function rotateX(radian) {
+    var cosine = Math.cos(radian);
+    var sine = Math.sin(radian);
 
-      c.fillText(this.ltr, this.x, this.y);
-      c.fillStyle = "black";
+    for (var index = this.vertices.length - 1; index > -1; --index) {
+      var p = this.vertices[index];
+      var y = (p.y - this.y) * cosine - (p.z - this.z) * sine;
+      var z = (p.y - this.y) * sine + (p.z - this.z) * cosine;
+      p.y = y + this.y;
+      p.z = z + this.z;
     }
-  }, {
-    key: "update",
-    value: function update() {
-      if (this.doResize == true || this.drawn == true) {
-        this.draw();
-      }
-    }
-  }]);
+  },
+  rotateY: function rotateY(radian) {
+    var cosine = Math.cos(radian);
+    var sine = Math.sin(radian);
 
-  return Pop_Words;
-}();
-
-var Fade_Words = /*#__PURE__*/function () {
-  function Fade_Words(ltr, x, y, opac, size, drawn) {
-    _classCallCheck(this, Fade_Words);
-
-    this.ltr = ltr;
-    this.x = x;
-    this.y = y;
-    this.opac = opac;
-    this.size = size;
-    this.drawn = drawn;
-  }
-
-  _createClass(Fade_Words, [{
-    key: "draw",
-    value: function draw() {
-      if (this.opac < 1 && this.drawn == false) {
-        this.opac += 0.03;
-      }
-
-      if (this.opac >= 1 && this.drawn == false) {
-        this.drawn = true;
-      }
-
-      c.globalAlpha = this.opac;
-      c.font = this.size + 'px Bungee';
-      c.fillText(this.ltr, this.x, this.y, 500);
-    }
-  }, {
-    key: "update",
-    value: function update() {
-      this.draw();
-    }
-  }]);
-
-  return Fade_Words;
-}();
-
-var Star = /*#__PURE__*/function () {
-  function Star(x, y, radians, radius, color, size, opac, delay) {
-    _classCallCheck(this, Star);
-
-    this.x = x;
-    this.y = y;
-    this.radians = Math.round(radians, 5);
-    this.radius = radius;
-    this.color = color;
-    this.size = size;
-    this.opac = opac;
-    this.delay = delay;
-  }
-
-  _createClass(Star, [{
-    key: "draw",
-    value: function draw() {
-      c.globalAlpha = this.opac;
-
-      if (this.opac < 1) {
-        this.opac += 0.01;
-      }
-
-      this.x = this.x + Math.cos(this.radians) * this.radius;
-      this.y = this.y + Math.sin(this.radians) * this.radius;
-      c.beginPath();
-      c.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-      c.fillStyle = this.color;
-      c.fill();
-      c.closePath();
-
-      if (this.radians >= 62.83) {
-        this.radians = 0;
-      }
-
-      this.x = Math.round(this.x);
-      this.y = Math.round(this.y);
-      this.radians += 0.01745;
-      c.fillStyle = "black";
-    }
-  }, {
-    key: "update",
-    value: function update() {
-      if (this.delay <= 0) {
-        this.draw();
-      } else {
-        this.delay -= 0.055;
-      }
-    }
-  }]);
-
-  return Star;
-}(); //
-
-
-var sentenceAry = [];
-var words = "Hi,I'm Zydric,web developer";
-var lastLtr = false;
-var sub = 0;
-var starAry;
-
-function setup() {
-  for (var i = 0; i < words.length; i++) {
-    if (i == words.length - 1) {
-      lastLtr = true;
-    }
-
-    if (i == 0) {
-      sentenceAry.push(new Pop_Words(words.charAt(i), i * 10, 0, 0, lastLtr, 30, true, false));
-    } else {
-      if (i < 3) {
-        if (i == 2) {
-          sentenceAry.push(new Pop_Words(words.charAt(i), i * 19, 0, 0, lastLtr, 30, false, false));
-        } else {
-          sentenceAry.push(new Pop_Words(words.charAt(i), i * 20, 0, 0, lastLtr, 30, false, false));
-        }
-      }
-
-      if (i >= 3 && i < 14) {
-        if (i == 4) {
-          sentenceAry.push(new Pop_Words(words.charAt(i), sub - 5, 50, 0, lastLtr, 30, false, false));
-        } else {
-          if (i == 5) {
-            sentenceAry.push(new Pop_Words(words.charAt(i), sub + 3, 50, 0, lastLtr, 30, false, false));
-            sub += 20;
-          } else {
-            if (i == 12) {
-              sentenceAry.push(new Pop_Words(words.charAt(i), sub - 3, 50, 0, lastLtr, 30, false, false));
-              sub += 15;
-            } else {
-              sentenceAry.push(new Pop_Words(words.charAt(i), sub, 50, 0, lastLtr, 30, false, false));
-              sub += 20;
-            }
-          }
-        }
-      }
-
-      if (i >= 14) {
-        if (sub > 0 && i == 14) {
-          sub = 0;
-        }
-
-        if (i == 15) {
-          sentenceAry.push(new Pop_Words(words.charAt(i), sub + 3, 100, 0, lastLtr, 30, false, false));
-          sub += 21;
-        } else {
-          sentenceAry.push(new Pop_Words(words.charAt(i), sub, 100, 0, lastLtr, 30, false, false));
-          sub += 20;
-        }
-      }
+    for (var index = this.vertices.length - 1; index > -1; --index) {
+      var p = this.vertices[index];
+      var x = (p.z - this.z) * sine + (p.x - this.x) * cosine;
+      var z = (p.z - this.z) * cosine - (p.x - this.x) * sine;
+      p.x = x + this.x;
+      p.z = z + this.z;
     }
   }
+}; //setup
 
-  starAry = [];
-  starAry.push(new Star(innerWidth / 2, innerHeight / 2 - 400, 0, 8, 'red', 200, 0, 0));
-  starAry.push(new Star(innerWidth / 2, innerHeight / 2 - 400, 0, 8, 'green', 200, 0, 10));
+var context = document.querySelector("#canvas_skill").getContext("2d");
+var pointer = new Point2D(0, 0);
+var cube = new Cube(0, 0, 400, 400);
+var height = document.documentElement.clientHeight;
+var width = document.documentElement.clientWidth;
+
+function project(points3d, width, height) {
+  //size of the cube
+  var points2d = new Array(points3d.length);
+  var focal_length = 200;
+
+  for (var index = points3d.length - 1; index > -1; --index) {
+    var p = points3d[index];
+    var x = p.x * (focal_length / p.z) + width * 0.5;
+    var y = p.y * (focal_length / p.z) + height * 0.5;
+    points2d[index] = new Point2D(x, y);
+  }
+
+  return points2d;
 }
 
-setup();
-var desc = "Megamind was a great movie";
-var description = new Fade_Words(desc, 0, 150, 0, 15, false);
-var currentLtr = 0; //words.charAt()
+function loop() {
+  //animate
+  window.requestAnimationFrame(loop);
+  height = document.documentElement.clientHeight;
+  width = document.documentElement.clientWidth;
+  context.canvas.height = height;
+  context.canvas.width = width;
+  context.fillStyle = "#ffffff";
+  context.clearRect(0, 0, width, height);
+  context.strokeStyle = "#ffffff";
+  cube.rotateX(pointer.y * 0.0001);
+  cube.rotateY(-pointer.x * 0.0001);
+  context.fillStyle = "black";
+  var vertices = project(cube.vertices, width, height);
 
-var active = true; //
+  for (var index = cube.faces.length - 1; index > -1; --index) {
+    var face = cube.faces[index];
+    var p1 = cube.vertices[face[0]];
+    var p2 = cube.vertices[face[1]];
+    var p3 = cube.vertices[face[2]];
+    var v1 = new Point3D(p2.x - p1.x, p2.y - p1.y, p2.z - p1.z);
+    var v2 = new Point3D(p3.x - p1.x, p3.y - p1.y, p3.z - p1.z);
+    var n = new Point3D(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);
 
-var mousex, mousey;
-c.canvas.addEventListener('mousemove', function (event) {
-  mousex = event.clientX - c.canvas.offsetLeft - 100, mousey = event.clientY - c.canvas.offsetTop - 100;
+    if (-p1.x * n.x + -p1.y * n.y + -p1.z * n.z >= 0) {
+      context.beginPath();
+      context.moveTo(vertices[face[0]].x, vertices[face[0]].y);
+      context.lineTo(vertices[face[1]].x, vertices[face[1]].y);
+      context.lineTo(vertices[face[2]].x, vertices[face[2]].y);
+      context.lineTo(vertices[face[3]].x, vertices[face[3]].y);
+      context.closePath();
+      context.fill();
+      context.stroke();
+    }
+  }
 
+  for (var _index = vertices.length - 1; _index > -1; --_index) {
+    context.textAlign = "center";
+    context.strokeStyle = "white";
+    context.font = "25px Bungee";
+    var myX = vertices[_index].x;
+    var myY = vertices[_index].y;
+
+    if (_index == 0) {
+      context.strokeText("LARAVEL", myX, myY);
+    }
+
+    if (_index == 1) {
+      context.strokeText("CSS", myX, myY);
+    }
+
+    if (_index == 2) {
+      context.strokeText("SCSS", myX, myY);
+    }
+
+    if (_index == 3) {
+      context.strokeText("REACT", myX, myY);
+    }
+
+    if (_index == 4) {
+      context.strokeText("HTML", myX, myY);
+    }
+
+    if (_index == 5) {
+      context.strokeText("JAVASCRIPT", myX, myY);
+    }
+
+    if (_index == 6) {
+      context.strokeText("MYSQL", myX, myY);
+    }
+
+    if (_index == 7) {
+      context.strokeText("PHP", myX, myY);
+    }
+  }
+}
+
+loop();
+window.addEventListener("click", function (event) {
+  pointer.x = event.pageX - width * 0.5;
+  pointer.y = event.pageY - height * 0.5;
 });
-
-function animate() {
-  requestAnimationFrame(animate);
-  c.clearRect(0, 0, innerWidth, innerHeight);
-  c.save();
-  c.translate(100, 100);
-
-  if (sentenceAry[sentenceAry.length - 1].drawn == true) {
-    starAry.forEach(function (stars) {
-      stars.update();
-    });
-  }
-
-  for (var i = 0; i < sentenceAry.length; i++) {
-    sentenceAry[i].mouseX = mousex;
-    sentenceAry[i].mouseY = mousey;
-
-    if (sentenceAry[i].doResize == false && currentLtr == i) {
-      currentLtr = i + 1;
-
-      if (currentLtr < sentenceAry.length) {
-        sentenceAry[currentLtr].doResize = true;
-      }
-    }
-
-    sentenceAry[i].update();
-  }
-
-  if (sentenceAry[sentenceAry.length - 1].drawn == true) {
-    description.update();
-  }
-
-  c.restore();
-}
-
-animate();
 },{}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -435,7 +297,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61279" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58609" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -611,5 +473,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/canvasHome.js"], null)
-//# sourceMappingURL=/canvasHome.40cfd92c.js.map
+},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/cube.js"], null)
+//# sourceMappingURL=/cube.1c2ec62a.js.map

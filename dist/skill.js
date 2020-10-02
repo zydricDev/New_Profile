@@ -117,297 +117,74 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/canvasHome.js":[function(require,module,exports) {
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+})({"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var canvas = document.querySelector('#canvas');
-var c = canvas.getContext('2d');
-canvas.width = innerWidth;
-canvas.height = innerHeight;
-
-var Pop_Words = /*#__PURE__*/function () {
-  function Pop_Words(ltr, x, y, opac, isLast, size, doResize, drawn, mouseX, mouseY) {
-    _classCallCheck(this, Pop_Words);
-
-    this.ltr = ltr;
-    this.x = x;
-    this.y = y;
-    this.opac = opac;
-    this.isLast = isLast;
-    this.size = size;
-    this.doResize = doResize;
-    this.drawn = drawn;
-    this.mouseX = mouseX;
-    this.mouseY = mouseY;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
   }
 
-  _createClass(Pop_Words, [{
-    key: "draw",
-    value: function draw() {
-      //&& this.opacDelay >= 0
-      if (this.opac < 1) {
-        this.opac += 0.2;
-      }
-
-      if (this.opac >= 1 && this.drawn == false) {
-        this.doResize = false;
-        this.drawn = true;
-      }
-
-      c.globalAlpha = this.opac;
-      c.font = this.size + 'px Bungee';
-
-      if (this.drawn == false && this.opac < 0.5) {
-        this.size += 4;
-      }
-
-      if (this.drawn == false && this.opac >= 0.5) {
-        this.size -= 4;
-      }
-
-      if (this.mouseX >= this.x && this.mouseX <= this.x + 20 && this.mouseY >= this.y - 20 && this.mouseY <= this.y && this.drawn == true && this.size < 40) {
-        this.size += 10;
-      }
-
-      if ((this.mouseX < this.x || this.mouseX > this.x + 20) &&
-      /*
-      (this.mouseY < this.y-20 ||
-      this.mouseY > this.y) &&*/
-      this.drawn == true && this.size > 30) {
-        this.size -= 2;
-      }
-      /*if(this.size >= 32){
-        this.size -=2
-      }*/
-
-
-      if (this.size >= 40) {
-        c.fillStyle = "red";
-      }
-
-      c.fillText(this.ltr, this.x, this.y);
-      c.fillStyle = "black";
-    }
-  }, {
-    key: "update",
-    value: function update() {
-      if (this.doResize == true || this.drawn == true) {
-        this.draw();
-      }
-    }
-  }]);
-
-  return Pop_Words;
-}();
-
-var Fade_Words = /*#__PURE__*/function () {
-  function Fade_Words(ltr, x, y, opac, size, drawn) {
-    _classCallCheck(this, Fade_Words);
-
-    this.ltr = ltr;
-    this.x = x;
-    this.y = y;
-    this.opac = opac;
-    this.size = size;
-    this.drawn = drawn;
-  }
-
-  _createClass(Fade_Words, [{
-    key: "draw",
-    value: function draw() {
-      if (this.opac < 1 && this.drawn == false) {
-        this.opac += 0.03;
-      }
-
-      if (this.opac >= 1 && this.drawn == false) {
-        this.drawn = true;
-      }
-
-      c.globalAlpha = this.opac;
-      c.font = this.size + 'px Bungee';
-      c.fillText(this.ltr, this.x, this.y, 500);
-    }
-  }, {
-    key: "update",
-    value: function update() {
-      this.draw();
-    }
-  }]);
-
-  return Fade_Words;
-}();
-
-var Star = /*#__PURE__*/function () {
-  function Star(x, y, radians, radius, color, size, opac, delay) {
-    _classCallCheck(this, Star);
-
-    this.x = x;
-    this.y = y;
-    this.radians = Math.round(radians, 5);
-    this.radius = radius;
-    this.color = color;
-    this.size = size;
-    this.opac = opac;
-    this.delay = delay;
-  }
-
-  _createClass(Star, [{
-    key: "draw",
-    value: function draw() {
-      c.globalAlpha = this.opac;
-
-      if (this.opac < 1) {
-        this.opac += 0.01;
-      }
-
-      this.x = this.x + Math.cos(this.radians) * this.radius;
-      this.y = this.y + Math.sin(this.radians) * this.radius;
-      c.beginPath();
-      c.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-      c.fillStyle = this.color;
-      c.fill();
-      c.closePath();
-
-      if (this.radians >= 62.83) {
-        this.radians = 0;
-      }
-
-      this.x = Math.round(this.x);
-      this.y = Math.round(this.y);
-      this.radians += 0.01745;
-      c.fillStyle = "black";
-    }
-  }, {
-    key: "update",
-    value: function update() {
-      if (this.delay <= 0) {
-        this.draw();
-      } else {
-        this.delay -= 0.055;
-      }
-    }
-  }]);
-
-  return Star;
-}(); //
-
-
-var sentenceAry = [];
-var words = "Hi,I'm Zydric,web developer";
-var lastLtr = false;
-var sub = 0;
-var starAry;
-
-function setup() {
-  for (var i = 0; i < words.length; i++) {
-    if (i == words.length - 1) {
-      lastLtr = true;
-    }
-
-    if (i == 0) {
-      sentenceAry.push(new Pop_Words(words.charAt(i), i * 10, 0, 0, lastLtr, 30, true, false));
-    } else {
-      if (i < 3) {
-        if (i == 2) {
-          sentenceAry.push(new Pop_Words(words.charAt(i), i * 19, 0, 0, lastLtr, 30, false, false));
-        } else {
-          sentenceAry.push(new Pop_Words(words.charAt(i), i * 20, 0, 0, lastLtr, 30, false, false));
-        }
-      }
-
-      if (i >= 3 && i < 14) {
-        if (i == 4) {
-          sentenceAry.push(new Pop_Words(words.charAt(i), sub - 5, 50, 0, lastLtr, 30, false, false));
-        } else {
-          if (i == 5) {
-            sentenceAry.push(new Pop_Words(words.charAt(i), sub + 3, 50, 0, lastLtr, 30, false, false));
-            sub += 20;
-          } else {
-            if (i == 12) {
-              sentenceAry.push(new Pop_Words(words.charAt(i), sub - 3, 50, 0, lastLtr, 30, false, false));
-              sub += 15;
-            } else {
-              sentenceAry.push(new Pop_Words(words.charAt(i), sub, 50, 0, lastLtr, 30, false, false));
-              sub += 20;
-            }
-          }
-        }
-      }
-
-      if (i >= 14) {
-        if (sub > 0 && i == 14) {
-          sub = 0;
-        }
-
-        if (i == 15) {
-          sentenceAry.push(new Pop_Words(words.charAt(i), sub + 3, 100, 0, lastLtr, 30, false, false));
-          sub += 21;
-        } else {
-          sentenceAry.push(new Pop_Words(words.charAt(i), sub, 100, 0, lastLtr, 30, false, false));
-          sub += 20;
-        }
-      }
-    }
-  }
-
-  starAry = [];
-  starAry.push(new Star(innerWidth / 2, innerHeight / 2 - 400, 0, 8, 'red', 200, 0, 0));
-  starAry.push(new Star(innerWidth / 2, innerHeight / 2 - 400, 0, 8, 'green', 200, 0, 10));
+  return bundleURL;
 }
 
-setup();
-var desc = "Megamind was a great movie";
-var description = new Fade_Words(desc, 0, 150, 0, 15, false);
-var currentLtr = 0; //words.charAt()
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
 
-var active = true; //
-
-var mousex, mousey;
-c.canvas.addEventListener('mousemove', function (event) {
-  mousex = event.clientX - c.canvas.offsetLeft - 100, mousey = event.clientY - c.canvas.offsetTop - 100;
-
-});
-
-function animate() {
-  requestAnimationFrame(animate);
-  c.clearRect(0, 0, innerWidth, innerHeight);
-  c.save();
-  c.translate(100, 100);
-
-  if (sentenceAry[sentenceAry.length - 1].drawn == true) {
-    starAry.forEach(function (stars) {
-      stars.update();
-    });
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
   }
 
-  for (var i = 0; i < sentenceAry.length; i++) {
-    sentenceAry[i].mouseX = mousex;
-    sentenceAry[i].mouseY = mousey;
+  return '/';
+}
 
-    if (sentenceAry[i].doResize == false && currentLtr == i) {
-      currentLtr = i + 1;
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
 
-      if (currentLtr < sentenceAry.length) {
-        sentenceAry[currentLtr].doResize = true;
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
       }
     }
 
-    sentenceAry[i].update();
-  }
-
-  if (sentenceAry[sentenceAry.length - 1].drawn == true) {
-    description.update();
-  }
-
-  c.restore();
+    cssTimeout = null;
+  }, 50);
 }
 
-animate();
-},{}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+module.exports = reloadCSS;
+},{"./bundle-url":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -435,7 +212,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61279" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58609" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -611,5 +388,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/canvasHome.js"], null)
-//# sourceMappingURL=/canvasHome.40cfd92c.js.map
+},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/skill.js.map

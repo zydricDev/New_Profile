@@ -2,6 +2,7 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+
 }
 
 html, body{
@@ -12,7 +13,7 @@ html, body{
     position: fixed;
     z-index: 25;
     min-height: 100%;
-    width: 5vw;
+    width: 80px;
     background: linear-gradient(to bottom left, #66ccff 16%, #ff6699 84%);
   }
 
@@ -26,8 +27,8 @@ html, body{
 #nav-list{
   align-items: center;
   display: flex;
-
   flex-direction: column;
+
 
   li{
     margin-top: 50px;
@@ -44,19 +45,43 @@ html, body{
   }
 }
 .home-content{
-  height: 100%;
-  width: 100%;
   background-color: linear-gradient(to bottom, #ff6666 0%, #ccff66 100%);
   canvas{
     background-color: white;
+
   }
 }
-.home, .about{
+.about-content{
+  img{
+    height: 100vh;
+    width: 100vw;
+  }
+
+}
+.skill-content{
+  font-family: 'Bungee', cursive;
+  canvas{
+
+    transform: translate(400px, 30px);
+  }
+  img{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+  }
+  .desc{
+    transform: translate(200px, 100px);
+    color: white;
+    position: absolute;
+  }
+}
+.home, .about, .skill{
   position: absolute;
   z-index: 1;
   background-color: grey;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 
   .black-screen{
     height: 100vh;
@@ -67,8 +92,5 @@ html, body{
     opacity: 0;
     display: none;
   }
-  img{
-    height: 100vh;
-    width: 100vw;
-  }
+
 }
