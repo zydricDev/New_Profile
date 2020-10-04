@@ -69,14 +69,30 @@ html nav, body nav {
   position: absolute;
 }
 
-.home, .about, .skill {
+.contact-content .contact-form {
+  position: absolute;
+  background-color: #000000;
+  right: 50%;
+  height: 100%;
+  width: 50%;
+}
+.contact-content .contact-form p {
+  transform: translate(100px, 100px);
+}
+.contact-content #map {
+  left: 50%;
+  height: 100vh;
+  width: 50vw;
+}
+
+.home, .about, .skill, .contact {
   position: absolute;
   z-index: 1;
   background-color: grey;
   height: 100%;
   width: 100%;
 }
-.home .black-screen, .about .black-screen, .skill .black-screen {
+.home .black-screen, .about .black-screen, .skill .black-screen, .contact .black-screen {
   height: 100vh;
   width: 100vw;
   position: absolute;

@@ -56,8 +56,8 @@ html, body{
     height: 100vh;
     width: 100vw;
   }
-
 }
+
 .skill-content{
   font-family: 'Bungee', cursive;
   canvas{
@@ -76,7 +76,26 @@ html, body{
     position: absolute;
   }
 }
-.home, .about, .skill{
+
+.contact-content{
+  .contact-form{
+    position: absolute;
+    background-color: #000000;
+    right: 50%;
+    height: 100%;
+    width:  50%;
+    p{
+      transform: translate(100px,100px);
+    }
+  }
+  #map{
+        left: 50%;
+        height: 100vh;
+        width:  50vw;
+  }
+}
+
+.home, .about, .skill, .contact{
   position: absolute;
   z-index: 1;
   background-color: grey;
