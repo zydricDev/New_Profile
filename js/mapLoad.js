@@ -1,17 +1,15 @@
 import Highway from '@dogstudio/highway';
 import {TimelineLite} from 'gsap';
 
-class Animation_Skill extends Highway.Renderer{
+class MapLoad extends Highway.Renderer{
 
     onEnter(){
-      const tl= new TimelineLite();
       let script = document.createElement('script');
-      let view = document.getElementById('switch_view');
-      script.setAttribute('src', '/cube.1c2ec62a.js');
+      let view = document.getElementById('content');
+      let key = "AIzaSyCxz3AG8xxfMuXMbR5ND5zL0Y8StCtNYNg";
+      script.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key='+key+'&callback=initMap');
       view.appendChild(script);
       }
-
-
 
 
     onLeaveCompleted(){
@@ -28,4 +26,4 @@ class Animation_Skill extends Highway.Renderer{
     }
 }
 
-export default Animation_Skill;
+export default MapLoad;

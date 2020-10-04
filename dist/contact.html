@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/style.6b54f5b7.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <title>Home</title>
+  </head>
+  <body>
+    <nav>
+      <ul id="nav-list">
+        <li><img src="/logo.236e4034.svg" class="rounded-circle" id="myLogo"></li>
+        <li><a href="/index.html"><i class="fas fa-home"></i></a></li>
+        <li><a href="/about.html"><i class="fas fa-user"></i></a></li>
+        <li><a href="/skill.html"><i class="fas fa-cog"></i></a></li>
+        <li><a href="#"><i class="fas fa-eye"></i></a></li>
+        <li><a href="/contact.html"><i class="far fa-paper-plane"></i></a></li>
+        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+      </ul>
+    </nav>
+
+    <main data-router-wrapper="">
+      <section data-router-view="contact" class="contact" id="switch_view">
+        <div class="black-screen" id="black-screen"></div>
+        <div class="contact-content" id="content">
+          <div class="contact-form">
+            <p>PAPAPAP</p>
+          </div>
+          <div id="map"></div>
+          <script>function initMap() {
+  var mapOptions = {
+    center: new google.maps.LatLng(40.7282, -73.7949),
+    zoom: 11,
+    styles: [{
+      "featureType": "administrative",
+      "elementType": "geometry",
+      "stylers": [{
+        "visibility": "on"
+      }]
+    }, {
+      "featureType": "administrative",
+      "elementType": "labels.text.fill",
+      "stylers": [{
+        "color": "#444444"
+      }]
+    }, {
+      "featureType": "administrative.country",
+      "elementType": "geometry.fill",
+      "stylers": [{
+        "visibility": "off"
+      }, {
+        "saturation": "100"
+      }, {
+        "gamma": "0.00"
+      }, {
+        "color": "#ff0000"
+      }]
+    }, {
+      "featureType": "administrative.country",
+      "elementType": "geometry.stroke",
+      "stylers": [{
+        "saturation": "100"
+      }, {
+        "color": "#3500ff"
+      }]
+    }, {
+      "featureType": "administrative.country",
+      "elementType": "labels",
+      "stylers": [{
+        "visibility": "on"
+      }]
+    }, {
+      "featureType": "administrative.country",
+      "elementType": "labels.text.fill",
+      "stylers": [{
+        "color": "#000000"
+      }]
+    }, {
+      "featureType": "administrative.country",
+      "elementType": "labels.text.stroke",
+      "stylers": [{
+        "color": "#ffffff"
+      }]
+    }, {
+      "featureType": "administrative.province",
+      "elementType": "labels.text.fill",
+      "stylers": [{
+        "color": "#4b3da9"
+      }]
+    }, {
+      "featureType": "administrative.locality",
+      "elementType": "geometry.fill",
+      "stylers": [{
+        "color": "#f90000"
+      }, {
+        "visibility": "off"
+      }]
+    }, {
+      "featureType": "administrative.land_parcel",
+      "elementType": "geometry.fill",
+      "stylers": [{
+        "color": "#000000"
+      }]
+    }, {
+      "featureType": "landscape",
+      "elementType": "all",
+      "stylers": [{
+        "color": "#f2f2f2"
+      }]
+    }, {
+      "featureType": "landscape",
+      "elementType": "geometry.fill",
+      "stylers": [{
+        "color": "#ffffff"
+      }]
+    }, {
+      "featureType": "landscape",
+      "elementType": "geometry.stroke",
+      "stylers": [{
+        "saturation": "100"
+      }]
+    }, {
+      "featureType": "landscape",
+      "elementType": "labels.text.fill",
+      "stylers": [{
+        "color": "#2b00ff"
+      }]
+    }, {
+      "featureType": "poi",
+      "elementType": "all",
+      "stylers": [{
+        "visibility": "off"
+      }]
+    }, {
+      "featureType": "road",
+      "elementType": "all",
+      "stylers": [{
+        "saturation": -100
+      }, {
+        "lightness": 45
+      }]
+    }, {
+      "featureType": "road",
+      "elementType": "geometry.fill",
+      "stylers": [{
+        "saturation": "100"
+      }, {
+        "color": "#cdcdcd"
+      }]
+    }, {
+      "featureType": "road",
+      "elementType": "geometry.stroke",
+      "stylers": [{
+        "color": "#3f00ff"
+      }, {
+        "saturation": "100"
+      }]
+    }, {
+      "featureType": "road.highway",
+      "elementType": "all",
+      "stylers": [{
+        "visibility": "simplified"
+      }]
+    }, {
+      "featureType": "road.arterial",
+      "elementType": "labels.icon",
+      "stylers": [{
+        "visibility": "off"
+      }]
+    }, {
+      "featureType": "transit",
+      "elementType": "all",
+      "stylers": [{
+        "visibility": "off"
+      }]
+    }, {
+      "featureType": "transit",
+      "elementType": "geometry.fill",
+      "stylers": [{
+        "visibility": "off"
+      }, {
+        "saturation": "100"
+      }]
+    }, {
+      "featureType": "water",
+      "elementType": "all",
+      "stylers": [{
+        "color": "#464fec"
+      }, {
+        "visibility": "on"
+      }]
+    }]
+  };
+  var uluru = {
+    lat: 40.7282,
+    lng: -73.7949
+  };
+  var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  var iconBase = {
+    url: "testMark.png",
+    scaledSize: new google.maps.Size(75, 75)
+  };
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map,
+    icon: iconBase
+  });
+}</script>
+
+
+        </div>
+
+      </section>
+    </main>
+
+
+
+
+  </body>
+  <script src="/js.00a46daa.js"></script>
+</html>
