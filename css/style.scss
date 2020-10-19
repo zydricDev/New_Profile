@@ -38,7 +38,9 @@ html, body{
     text-decoration: none;
   }
   img{
-
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-color: #000000;
     height: 50px;
     width: 50px;
 
@@ -46,15 +48,25 @@ html, body{
 }
 .home-content{
   background-color: linear-gradient(to bottom, #ff6666 0%, #ccff66 100%);
-  canvas{
+  #canvas{
     background-color: white;
-
+    height: 100vh;
+    width: 100%;
   }
 }
 .about-content{
-  img{
+  font-family: 'Bungee', cursive;
+  #canvas{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
+  }
+  #description{
+    position: absolute;
+    color: #FFFFFF;
+    padding: 10px 10px;
+    left: 200px;
+    top: 100px;
+
   }
 }
 

@@ -3,13 +3,17 @@ import {TimelineLite} from 'gsap';
 
 class Animation_Skill extends Highway.Renderer{
 
-    onEnter(){
+    onEnterCompleted(){
       const tl= new TimelineLite();
       let script = document.createElement('script');
       let view = document.getElementById('switch_view');
+
+      let canvas = document.getElementById('canvas_skill');
+      canvas.style.opacity = 0
       script.setAttribute('src', '/cube.1c2ec62a.js');
       view.appendChild(script);
-      }
+      tl.fromTo(canvas, 0.5, {opacity: 0},{opacity: 1});
+    }
 
 
 

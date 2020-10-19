@@ -351,17 +351,6 @@ class Stars{
     c.shadowBlur = 0
     c.closePath()
 
-    /**
-    c.moveTo(this.x, this.y);
-    c.lineTo(this.pivotX, this.pivotY);
-    c.stroke();
-
-    c.beginPath()
-    c.arc(this.pivotX, this.pivotY, 5, 0, Math.PI*2, false)
-    c.fillStyle = 'red'
-    c.fill()
-    c.closePath()
-    **/
     var xSub = this.x - this.pivotX
     var ySub = this.y - this.pivotY
 
@@ -372,8 +361,7 @@ class Stars{
 
     this.x = xSub2 + this.pivotX
     this.y = ySub2 + this.pivotY
-    //this.x = this.x + Math.cos(this.radians) * 10
-    //this.y = this.y + Math.sin(this.radians) * 10
+
 
 
 
@@ -462,8 +450,7 @@ class Text_Background{
     c.strokeStyle = "transparent";
     c.stroke()
     c.fill()
-    //c.fillRect(this.x, this.y, this.height, this.width)
-    //c.fillRect(-50,-50,400,300)
+
     c.closePath()
   }
   update(){

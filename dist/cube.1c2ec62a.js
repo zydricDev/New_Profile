@@ -188,80 +188,82 @@ function project(points3d, width, height) {
 }
 
 function loop() {
-  //animate
-  window.requestAnimationFrame(loop);
-  height = document.documentElement.clientHeight;
-  width = document.documentElement.clientWidth;
-  context.canvas.height = height;
-  context.canvas.width = width;
-  context.fillStyle = "#ffffff";
-  context.clearRect(0, 0, width, height);
-  context.strokeStyle = "#ffffff";
-  cube.rotateX(pointer.y * 0.0001);
-  cube.rotateY(-pointer.x * 0.0001);
-  context.fillStyle = "black";
-  var vertices = project(cube.vertices, width, height);
+  if(document.getElementById('hidden').innerHTML == "Completed"){
+    window.requestAnimationFrame(loop);
+    height = document.documentElement.clientHeight;
+    width = document.documentElement.clientWidth;
+    context.canvas.height = height;
+    context.canvas.width = width;
+    context.fillStyle = "#ffffff";
+    context.clearRect(0, 0, width, height);
+    context.strokeStyle = "#ffffff";
+    cube.rotateX(pointer.y * 0.0001);
+    cube.rotateY(-pointer.x * 0.0001);
+    context.fillStyle = "black";
+    var vertices = project(cube.vertices, width, height);
 
-  for (var index = cube.faces.length - 1; index > -1; --index) {
-    var face = cube.faces[index];
-    var p1 = cube.vertices[face[0]];
-    var p2 = cube.vertices[face[1]];
-    var p3 = cube.vertices[face[2]];
-    var v1 = new Point3D(p2.x - p1.x, p2.y - p1.y, p2.z - p1.z);
-    var v2 = new Point3D(p3.x - p1.x, p3.y - p1.y, p3.z - p1.z);
-    var n = new Point3D(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);
+    for (var index = cube.faces.length - 1; index > -1; --index) {
+      var face = cube.faces[index];
+      var p1 = cube.vertices[face[0]];
+      var p2 = cube.vertices[face[1]];
+      var p3 = cube.vertices[face[2]];
+      var v1 = new Point3D(p2.x - p1.x, p2.y - p1.y, p2.z - p1.z);
+      var v2 = new Point3D(p3.x - p1.x, p3.y - p1.y, p3.z - p1.z);
+      var n = new Point3D(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);
 
-    if (-p1.x * n.x + -p1.y * n.y + -p1.z * n.z >= 0) {
-      context.beginPath();
-      context.moveTo(vertices[face[0]].x, vertices[face[0]].y);
-      context.lineTo(vertices[face[1]].x, vertices[face[1]].y);
-      context.lineTo(vertices[face[2]].x, vertices[face[2]].y);
-      context.lineTo(vertices[face[3]].x, vertices[face[3]].y);
-      context.closePath();
-      context.fill();
-      context.stroke();
+      if (-p1.x * n.x + -p1.y * n.y + -p1.z * n.z >= 0) {
+        context.beginPath();
+        context.moveTo(vertices[face[0]].x, vertices[face[0]].y);
+        context.lineTo(vertices[face[1]].x, vertices[face[1]].y);
+        context.lineTo(vertices[face[2]].x, vertices[face[2]].y);
+        context.lineTo(vertices[face[3]].x, vertices[face[3]].y);
+        context.closePath();
+        context.fill();
+        context.stroke();
+      }
+    }
+
+    for (var _index = vertices.length - 1; _index > -1; --_index) {
+      context.textAlign = "center";
+      context.strokeStyle = "white";
+      context.font = "25px Bungee";
+      var myX = vertices[_index].x;
+      var myY = vertices[_index].y;
+
+      if (_index == 0) {
+        context.strokeText("LARAVEL", myX, myY);
+      }
+
+      if (_index == 1) {
+        context.strokeText("CSS", myX, myY);
+      }
+
+      if (_index == 2) {
+        context.strokeText("SCSS", myX, myY);
+      }
+
+      if (_index == 3) {
+        context.strokeText("REACT", myX, myY);
+      }
+
+      if (_index == 4) {
+        context.strokeText("HTML", myX, myY);
+      }
+
+      if (_index == 5) {
+        context.strokeText("JAVASCRIPT", myX, myY);
+      }
+
+      if (_index == 6) {
+        context.strokeText("MYSQL", myX, myY);
+      }
+
+      if (_index == 7) {
+        context.strokeText("PHP", myX, myY);
+      }
     }
   }
 
-  for (var _index = vertices.length - 1; _index > -1; --_index) {
-    context.textAlign = "center";
-    context.strokeStyle = "white";
-    context.font = "25px Bungee";
-    var myX = vertices[_index].x;
-    var myY = vertices[_index].y;
-
-    if (_index == 0) {
-      context.strokeText("LARAVEL", myX, myY);
-    }
-
-    if (_index == 1) {
-      context.strokeText("CSS", myX, myY);
-    }
-
-    if (_index == 2) {
-      context.strokeText("SCSS", myX, myY);
-    }
-
-    if (_index == 3) {
-      context.strokeText("REACT", myX, myY);
-    }
-
-    if (_index == 4) {
-      context.strokeText("HTML", myX, myY);
-    }
-
-    if (_index == 5) {
-      context.strokeText("JAVASCRIPT", myX, myY);
-    }
-
-    if (_index == 6) {
-      context.strokeText("MYSQL", myX, myY);
-    }
-
-    if (_index == 7) {
-      context.strokeText("PHP", myX, myY);
-    }
-  }
 }
 
 loop();
