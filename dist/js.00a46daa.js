@@ -5922,6 +5922,11 @@ var Sweep = /*#__PURE__*/function (_Highway$Transition) {
         left: '100%',
         onComplete: function onComplete() {
           document.getElementById('black-screen').remove();
+          var status = document.getElementById('hidden');
+
+          if (status != null) {
+            status.innerHTML = "Completed";
+          }
         }
       }).fromTo(content, 1, {
         transform: "scale(0.8,0.8)"
@@ -5948,6 +5953,12 @@ var Sweep = /*#__PURE__*/function (_Highway$Transition) {
       var from = _ref2.from,
           done = _ref2.done;
       var tl = new _gsap.TimelineLite();
+      var status = document.getElementById('hidden');
+
+      if (status != null) {
+        status.innerHTML = "Loading";
+      }
+
       tl.fromTo(from.querySelectorAll('#content'), 0.5, {
         transform: "scale(1,1)"
       }, {
@@ -6086,10 +6097,14 @@ var Animation_Home = /*#__PURE__*/function (_Highway$Renderer) {
     key: "onEnter",
     value: function onEnter() {
       var tl = new _gsap.TimelineLite();
-      var script = document.createElement('script');
-      var view = document.getElementById('switch_view');
-      script.setAttribute('src', '/canvasHome.40cfd92c.js');
-      view.appendChild(script);
+
+      if (document.getElementById('loaded_canvas') == null) {
+        var script = document.createElement('script');
+        var view = document.getElementById('switch_view');
+        script.setAttribute('src', '/canvasHome.40cfd92c.js');
+        script.id = 'loaded_canvas';
+        view.appendChild(script);
+      }
     }
   }, {
     key: "onLeaveCompleted",
@@ -6162,13 +6177,20 @@ var Animation_Skill = /*#__PURE__*/function (_Highway$Renderer) {
   }
 
   _createClass(Animation_Skill, [{
-    key: "onEnter",
-    value: function onEnter() {
+    key: "onEnterCompleted",
+    value: function onEnterCompleted() {
       var tl = new _gsap.TimelineLite();
       var script = document.createElement('script');
       var view = document.getElementById('switch_view');
+      var canvas = document.getElementById('canvas_skill');
+      canvas.style.opacity = 0;
       script.setAttribute('src', '/cube.1c2ec62a.js');
       view.appendChild(script);
+      tl.fromTo(canvas, 0.5, {
+        opacity: 0
+      }, {
+        opacity: 1
+      });
     }
   }, {
     key: "onLeaveCompleted",
@@ -6255,6 +6277,7 @@ var MapLoad = /*#__PURE__*/function (_Highway$Renderer) {
           mapDiv.setAttribute('id', 'map');
           view.appendChild(mapDiv);
           var map_script = document.createElement('script');
+          map_script.setAttribute("defer", "defer");
 
           map_script.innerHTML = function initMap() {
             var mapOptions = {
@@ -6426,8 +6449,8 @@ var MapLoad = /*#__PURE__*/function (_Highway$Renderer) {
             };
             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
             var iconBase = {
-              url: "testMark.png",
-              scaledSize: new google.maps.Size(75, 75)
+              url: "googleMarker.png",
+              scaledSize: new google.maps.Size(100, 100)
             };
             var marker = new google.maps.Marker({
               position: uluru,
@@ -6455,6 +6478,12 @@ var MapLoad = /*#__PURE__*/function (_Highway$Renderer) {
         }, {
           opacity: 1,
           onComplete: function onComplete() {
+            for (var i = 0; i < document.head.children.length; i++) {
+              if (document.head.children[i].type == "text/javascript") {
+                console.log(document.head.children[i].remove());
+              }
+            }
+
             element.remove();
           }
         });
@@ -6466,6 +6495,365 @@ var MapLoad = /*#__PURE__*/function (_Highway$Renderer) {
 }(_highway.default.Renderer);
 
 var _default = MapLoad;
+exports.default = _default;
+},{"@dogstudio/highway":"node_modules/@dogstudio/highway/build/highway.module.js","gsap":"node_modules/gsap/index.js"}],"js/aboutAnimation.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _highway = _interopRequireDefault(require("@dogstudio/highway"));
+
+var _gsap = require("gsap");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var Animation_About = /*#__PURE__*/function (_Highway$Renderer) {
+  _inherits(Animation_About, _Highway$Renderer);
+
+  var _super = _createSuper(Animation_About);
+
+  function Animation_About() {
+    _classCallCheck(this, Animation_About);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Animation_About, [{
+    key: "onEnter",
+    value: function onEnter() {
+      if (document.getElementById('loaded_canvas') == null) {
+        var status = document.getElementById('hidden');
+        var script = document.createElement('script');
+        var view = document.getElementById('switch_view');
+        script.setAttribute('src', '/about.4565acc5.js');
+        view.appendChild(script);
+      }
+    }
+  }, {
+    key: "onLeaveCompleted",
+    value: function onLeaveCompleted() {
+      if (document.getElementById('switch_view') !== null) {
+        var tl = new _gsap.TimelineLite();
+        var element = document.getElementById('switch_view');
+        tl.fromTo(element.children[0], 1, {
+          opacity: 1
+        }, {
+          opacity: 1,
+          onComplete: function onComplete() {
+            element.remove();
+          }
+        });
+      }
+    }
+  }]);
+
+  return Animation_About;
+}(_highway.default.Renderer);
+
+var _default = Animation_About;
+exports.default = _default;
+},{"@dogstudio/highway":"node_modules/@dogstudio/highway/build/highway.module.js","gsap":"node_modules/gsap/index.js"}],"js/homeTransition.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _highway = _interopRequireDefault(require("@dogstudio/highway"));
+
+var _gsap = require("gsap");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var Home_Transition = /*#__PURE__*/function (_Highway$Transition) {
+  _inherits(Home_Transition, _Highway$Transition);
+
+  var _super = _createSuper(Home_Transition);
+
+  function Home_Transition() {
+    _classCallCheck(this, Home_Transition);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Home_Transition, [{
+    key: "in",
+    value: function _in(_ref) {
+      var from = _ref.from,
+          to = _ref.to,
+          done = _ref.done;
+      var tl = new _gsap.TimelineLite();
+      var myLogo = from.parentNode.parentNode.querySelectorAll("#myLogo");
+      var loadScreen = to.querySelectorAll('#black-screen');
+      var content = to.querySelectorAll('#content');
+      tl.fromTo(myLogo, 1, {
+        opacity: 1,
+        transform: "translate(0px,0px)"
+      }, {
+        opacity: 1,
+        transform: "translate(800px,350px)"
+      }).fromTo(to, 1, {
+        left: '-100%'
+      }, {
+        left: '0%',
+        onComplete: function onComplete() {
+          if (document.getElementById('loaded_canvas') == null) {
+            var script = document.createElement('script');
+            var view = document.getElementById('switch_view');
+            script.setAttribute('src', '/canvasHome.40cfd92c.js');
+            script.id = "loaded_canvas";
+            view.appendChild(script);
+          }
+        }
+      }, '-=1').fromTo(loadScreen, 1, {
+        opacity: 1,
+        display: "block",
+        backgroundColor: 'black',
+        left: '0%'
+      }, {
+        opacity: 1,
+        display: "block",
+        backgroundColor: 'black',
+        left: '100%',
+        onComplete: function onComplete() {
+          document.getElementById('black-screen').remove();
+          var status = document.getElementById('hidden');
+
+          if (status != null) {
+            status.innerHTML = "Completed";
+          }
+        }
+      }).fromTo(content, 1, {
+        transform: "scale(0.8,0.8)"
+      }, {
+        transform: "scale(1,1)"
+      }, '-=0.1').fromTo(myLogo, 0.5, {
+        transform: "translate(800px,350px)"
+      }, {
+        transform: "translate(1600px,350px)"
+      }, '-=1.9').fromTo(myLogo, 0.5, {
+        opacity: 0,
+        transform: "translate(0px,0px)"
+      }, {
+        opacity: 1,
+        transform: "translate(0px,0px)",
+        onComplete: function onComplete() {
+          done();
+        }
+      }); //.fromTo(to.children[0], 2, {opacity: 0}, {opacity: 1})
+    }
+  }, {
+    key: "out",
+    value: function out(_ref2) {
+      var from = _ref2.from,
+          done = _ref2.done;
+      var tl = new _gsap.TimelineLite();
+      var status = document.getElementById('hidden');
+
+      if (status != null) {
+        status.innerHTML = "Loading";
+      }
+
+      tl.fromTo(from.querySelectorAll('#content'), 0.5, {
+        transform: "scale(1,1)"
+      }, {
+        transform: "scale(0.8,0.8)"
+      });
+      done();
+    }
+  }]);
+
+  return Home_Transition;
+}(_highway.default.Transition);
+
+var _default = Home_Transition;
+exports.default = _default;
+},{"@dogstudio/highway":"node_modules/@dogstudio/highway/build/highway.module.js","gsap":"node_modules/gsap/index.js"}],"js/aboutTransition.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _highway = _interopRequireDefault(require("@dogstudio/highway"));
+
+var _gsap = require("gsap");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var About_Transition = /*#__PURE__*/function (_Highway$Transition) {
+  _inherits(About_Transition, _Highway$Transition);
+
+  var _super = _createSuper(About_Transition);
+
+  function About_Transition() {
+    _classCallCheck(this, About_Transition);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(About_Transition, [{
+    key: "in",
+    value: function _in(_ref) {
+      var from = _ref.from,
+          to = _ref.to,
+          done = _ref.done;
+      var tl = new _gsap.TimelineLite();
+      var myLogo = from.parentNode.parentNode.querySelectorAll("#myLogo");
+      var loadScreen = to.querySelectorAll('#black-screen');
+      var content = to.querySelectorAll('#content');
+      tl.fromTo(myLogo, 1, {
+        opacity: 1,
+        transform: "translate(0px,0px)"
+      }, {
+        opacity: 1,
+        transform: "translate(800px,350px)"
+      }).fromTo(to, 1, {
+        left: '-100%'
+      }, {
+        left: '0%',
+        onComplete: function onComplete() {
+          if (document.getElementById('loaded_canvas') == null) {
+            var script = document.createElement('script');
+            var view = document.getElementById('switch_view');
+            script.setAttribute('src', '/about.4565acc5.js');
+            script.id = "loaded_canvas";
+            view.appendChild(script);
+          }
+        }
+      }, '-=1').fromTo(loadScreen, 1, {
+        opacity: 1,
+        display: "block",
+        backgroundColor: 'black',
+        left: '0%'
+      }, {
+        opacity: 1,
+        display: "block",
+        backgroundColor: 'black',
+        left: '100%',
+        onComplete: function onComplete() {
+          document.getElementById('black-screen').remove();
+          var status = document.getElementById('hidden');
+
+          if (status != null) {
+            status.innerHTML = "Completed";
+          }
+        }
+      }).fromTo(content, 1, {
+        transform: "scale(0.8,0.8)"
+      }, {
+        transform: "scale(1,1)"
+      }, '-=0.1').fromTo(myLogo, 0.5, {
+        transform: "translate(800px,350px)"
+      }, {
+        transform: "translate(1600px,350px)"
+      }, '-=1.9').fromTo(myLogo, 0.5, {
+        opacity: 0,
+        transform: "translate(0px,0px)"
+      }, {
+        opacity: 1,
+        transform: "translate(0px,0px)",
+        onComplete: function onComplete() {
+          done();
+        }
+      }); //.fromTo(to.children[0], 2, {opacity: 0}, {opacity: 1})
+    }
+  }, {
+    key: "out",
+    value: function out(_ref2) {
+      var from = _ref2.from,
+          done = _ref2.done;
+      var tl = new _gsap.TimelineLite();
+      var status = document.getElementById('hidden');
+
+      if (status != null) {
+        status.innerHTML = "Loading";
+      }
+
+      tl.fromTo(from.querySelectorAll('#content'), 0.5, {
+        transform: "scale(1,1)"
+      }, {
+        transform: "scale(0.8,0.8)"
+      });
+      done();
+    }
+  }]);
+
+  return About_Transition;
+}(_highway.default.Transition);
+
+var _default = About_Transition;
 exports.default = _default;
 },{"@dogstudio/highway":"node_modules/@dogstudio/highway/build/highway.module.js","gsap":"node_modules/gsap/index.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
@@ -6482,21 +6870,29 @@ var _skillAnimation = _interopRequireDefault(require("./skillAnimation"));
 
 var _mapLoad = _interopRequireDefault(require("./mapLoad"));
 
+var _aboutAnimation = _interopRequireDefault(require("./aboutAnimation"));
+
+var _homeTransition = _interopRequireDefault(require("./homeTransition"));
+
+var _aboutTransition = _interopRequireDefault(require("./aboutTransition"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var H = new _highway.default.Core({
   renderers: {
     // Only one renderer at a time...
     home: _homeAnimation.default,
-    about: _startup.default,
+    about: _aboutAnimation.default,
     skill: _skillAnimation.default,
     contact: _mapLoad.default
   },
   transitions: {
-    default: _transition.default
+    default: _transition.default,
+    home: _homeTransition.default,
+    about: _aboutTransition.default
   }
 });
-},{"@dogstudio/highway":"node_modules/@dogstudio/highway/build/highway.module.js","./transition":"js/transition.js","./startup":"js/startup.js","./homeAnimation":"js/homeAnimation.js","./skillAnimation":"js/skillAnimation.js","./mapLoad":"js/mapLoad.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@dogstudio/highway":"node_modules/@dogstudio/highway/build/highway.module.js","./transition":"js/transition.js","./startup":"js/startup.js","./homeAnimation":"js/homeAnimation.js","./skillAnimation":"js/skillAnimation.js","./mapLoad":"js/mapLoad.js","./aboutAnimation":"js/aboutAnimation.js","./homeTransition":"js/homeTransition.js","./aboutTransition":"js/aboutTransition.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -6524,7 +6920,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60734" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60579" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

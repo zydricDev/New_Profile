@@ -13,9 +13,11 @@ class MapLoad extends Highway.Renderer{
         view.appendChild(mapDiv);
 
         let map_script = document.createElement('script');
+        map_script.setAttribute("defer", "defer");
 
         map_script.innerHTML =
         function initMap() {
+
           var mapOptions = {
             center: new google.maps.LatLng(40.7282,-73.7949),
             zoom: 11,
@@ -265,8 +267,8 @@ class MapLoad extends Highway.Renderer{
           var map = new google.maps.Map(
           document.getElementById('map'), mapOptions);
           var iconBase = {
-            url: "testMark.png",
-            scaledSize: new google.maps.Size(75, 75)
+            url: "googleMarker.png",
+            scaledSize: new google.maps.Size(100, 100)
           }
           var marker = new google.maps.Marker(
             { position: uluru,
@@ -277,15 +279,13 @@ class MapLoad extends Highway.Renderer{
         }
         view.appendChild(map_script);
 
-
         let script = document.createElement('script');
-
         let key = "AIzaSyCxz3AG8xxfMuXMbR5ND5zL0Y8StCtNYNg";
         script.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key='+key+'&callback=initMap');
         view.appendChild(script);
       }});
 
-      }
+    }
 
 
     onLeaveCompleted(){
@@ -294,6 +294,13 @@ class MapLoad extends Highway.Renderer{
         const tl= new TimelineLite();
         var element = document.getElementById('switch_view')
         tl.fromTo(element.children[0], 1, {opacity: 1},{opacity: 1, onComplete: function(){
+          for(let i=0; i<document.head.children.length; i++){
+            if(document.head.children[i].type == "text/javascript"){
+              console.log(document.head.children[i].remove());
+            }
+
+          }
+
           element.remove();
         }});
       }

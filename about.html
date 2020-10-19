@@ -11,12 +11,13 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <link rel="stylesheet" href="./css/style.scss" />
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <title>Home</title>
   </head>
   <body>
     <nav>
       <ul id="nav-list">
-        <li><img src="./images/logo.svg" class="rounded-circle" id="myLogo"></li>
+        <li><img src="./images/logo_default.svg" class="rounded-circle" id="myLogo"></li>
         <li><a href="./index.html"><i class="fas fa-home"></i></a></li>
         <li><a href="./about.html"><i class="fas fa-user"></i></a></li>
         <li><a href="./skill.html"><i class="fas fa-cog"></i></a></li>
@@ -29,10 +30,17 @@
     <main data-router-wrapper>
       <section data-router-view="about" class="about" id="switch_view">
         <div class="black-screen" id="black-screen"></div>
+        <div id="hidden" style="display: none;">Completed</div>
         <div class="about-content" id="content">
-          <img src="./images/mountain.jpg" alt="">
+          <div id="description">
+            <h1>HEHEEHH</h1>
+            <p>HWEEHWASDASDASDASDASDASD</p>
+          </div>
+          <canvas id="canvas"></canvas>
         </div>
 
+
+        </script>
       </section>
     </main>
 
