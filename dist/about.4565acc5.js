@@ -129,6 +129,13 @@ var c = canvas.getContext('2d');
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
+function onWindowResize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', onWindowResize, false);
+
 var Diamond = /*#__PURE__*/function () {
   function Diamond(distance, color) {
     _classCallCheck(this, Diamond);
@@ -280,25 +287,23 @@ function setup() {
 setup();
 
 function animate() {
-  if(document.getElementById('hidden').innerHTML === "Completed"){
-    requestAnimationFrame(animate)
-    c.clearRect(0,0, innerWidth, innerHeight)
-    c.save()
-    c.translate(100,100)
+  if (document.getElementById('hidden').innerHTML == "Completed") {
+    requestAnimationFrame(animate);
+    c.clearRect(0, 0, innerWidth, innerHeight);
+    c.save();
+    c.translate(100, 100);
 
-
-    for(let i=0; i<circleTrack.length; i++){
-      if(circleAry[circleTrack[i]].last == true){
-
-        circleAry[circleTrack[i]].last = false
-        circleTrack.push(circleTrack.shift())
+    for (var i = 0; i < circleTrack.length; i++) {
+      if (circleAry[circleTrack[i]].last == true) {
+        circleAry[circleTrack[i]].last = false;
+        circleTrack.push(circleTrack.shift());
       }
-      circleAry[circleTrack[i]].update()
 
+      circleAry[circleTrack[i]].update();
     }
-    border.update()
 
-    c.restore()
+    border.update();
+    c.restore();
   }
 }
 
@@ -331,7 +336,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56720" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61014" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

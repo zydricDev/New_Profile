@@ -4,6 +4,12 @@ const c = canvas.getContext('2d')
 canvas.width = innerWidth
 canvas.height = innerHeight
 
+function onWindowResize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight
+}
+window.addEventListener('resize', onWindowResize, false);
+
 class Gradient{
   constructor(r,g,b){
     this.r = r
