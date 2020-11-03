@@ -4,6 +4,12 @@ const c = canvas.getContext('2d')
 canvas.width = innerWidth
 canvas.height = innerHeight
 
+function onWindowResize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight
+}
+window.addEventListener('resize', onWindowResize, false);
+
 class Diamond{
   constructor(distance, color){
     this.offset_X = 0
