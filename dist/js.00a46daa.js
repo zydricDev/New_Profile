@@ -6082,6 +6082,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+//this
 var Animation_Home = /*#__PURE__*/function (_Highway$Renderer) {
   _inherits(Animation_Home, _Highway$Renderer);
 
@@ -6165,6 +6166,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+//this
 var Animation_Skill = /*#__PURE__*/function (_Highway$Renderer) {
   _inherits(Animation_Skill, _Highway$Renderer);
 
@@ -6251,6 +6253,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+//edit this
 var MapLoad = /*#__PURE__*/function (_Highway$Renderer) {
   _inherits(MapLoad, _Highway$Renderer);
 
@@ -6532,6 +6535,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+//this
 var Animation_About = /*#__PURE__*/function (_Highway$Renderer) {
   _inherits(Animation_About, _Highway$Renderer);
 
@@ -6613,6 +6617,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+//this
 var Home_Transition = /*#__PURE__*/function (_Highway$Transition) {
   _inherits(Home_Transition, _Highway$Transition);
 
@@ -6752,6 +6757,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+//this
 var About_Transition = /*#__PURE__*/function (_Highway$Transition) {
   _inherits(About_Transition, _Highway$Transition);
 
@@ -6920,7 +6926,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57378" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61393" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
