@@ -573,11 +573,11 @@ function setup(){
   starAry = []
   words = "Hi,I'm Zydric,web developer"
 
-  desc = "Megamind was a great movie"
+  desc = "Front-End & Web Application Developer"
   word_offset_X = 100
   word_offset_Y = 50
 
-  description = new Fade_Words(desc, 0+word_offset_X, 150+word_offset_Y, 0, 15, false)
+  description = new Fade_Words(desc, -10+word_offset_X, 150+word_offset_Y, 0, 15, false)
 
   for(var i=0; i<words.length; i++){
 

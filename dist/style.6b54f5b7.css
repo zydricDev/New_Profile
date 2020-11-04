@@ -135,6 +135,7 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
 .about-content #description {
   position: absolute;
   color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.76);
   padding: 10px 10px;
   left: 200px;
   top: 100px;
