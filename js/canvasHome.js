@@ -3,11 +3,12 @@ const c = canvas.getContext('2d')
 
 canvas.width = innerWidth
 canvas.height = innerHeight
-const staticWidth = window.innerWidth;
+
 
 function onWindowResize(){
+
   canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight
+  canvas.height = window.innerHeight;
 }
 window.addEventListener('resize', onWindowResize, false);
 
@@ -398,7 +399,7 @@ class City{
   draw(){
     if(this.frame >= this.delay){
 
-      c.drawImage(this.img, -100, this.y, staticWidth, 800)
+      c.drawImage(this.img, -100, this.y, window.innerWidth, window.innerHeight)
     }else{ this.frame += 1 }
 
     if(this.y > 50 && this.frame >= this.delay && this.bounce == false){
