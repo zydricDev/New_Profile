@@ -56,17 +56,7 @@ html, body{
       left: 8px;
     }
 
-    #skill-fnt:hover i{
-      opacity: 0;
-      transition: 0.3s;
-    }
-    #skill-fnt:hover p{
-      opacity: 1;
-    }
-    #skill-fnt p{
-      top: 248px;
-      left: 10px;
-    }
+
 
     #work-fnt:hover i{
       opacity: 0;
@@ -76,8 +66,8 @@ html, body{
       opacity: 1;
     }
     #work-fnt p{
+      top: 248px;
 
-      top: 321px;
       left: 12px;
     }
 
@@ -89,7 +79,7 @@ html, body{
       opacity: 1;
     }
     #contact-fnt p{
-      top: 396px;
+      top: 321px;
       left: 0px;
     }
 
@@ -153,44 +143,21 @@ html, body{
   }
 }
 
-.skill-content{
-  font-family: 'Bungee', cursive;
-  canvas{
 
-    transform: translate(400px, 30px);
-  }
-  img{
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    z-index: -1;
-  }
-  .desc{
-    transform: translate(200px, 100px);
-    color: white;
-    position: absolute;
-  }
-}
 
 .contact-content{
   .contact-form{
     position: absolute;
     background-color: #000000;
-    right: 50%;
-    height: 100%;
-    width:  50%;
     p{
       transform: translate(100px,100px);
+      background-color: #ffffff;
     }
   }
-  #map{
-        left: 50%;
-        height: 100vh;
-        width:  50vw;
-  }
+
 }
 
-.home, .about, .skill, .contact{
+.home, .about, .contact{
   position: absolute;
   z-index: 1;
   background-color: grey;

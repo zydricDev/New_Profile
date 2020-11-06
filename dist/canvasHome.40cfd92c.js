@@ -128,7 +128,6 @@ var canvas = document.querySelector('canvas');
 var c = canvas.getContext('2d');
 canvas.width = innerWidth;
 canvas.height = innerHeight;
-var staticWidth = window.innerWidth;
 
 function onWindowResize() {
   canvas.width = window.innerWidth;
@@ -492,7 +491,7 @@ var City = /*#__PURE__*/function () {
     key: "draw",
     value: function draw() {
       if (this.frame >= this.delay) {
-        c.drawImage(this.img, -100, this.y, staticWidth, 800);
+        c.drawImage(this.img, -100, this.y, window.innerWidth, window.innerHeight);
       } else {
         this.frame += 1;
       }
@@ -888,7 +887,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54181" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53953" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
