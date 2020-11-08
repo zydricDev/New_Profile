@@ -130,13 +130,89 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   top: 100px;
 }
 
-.contact-content .contact-form {
-  position: absolute;
-  background-color: #000000;
+.contact-content #canvas {
+  height: 100vh;
+  width: 100%;
 }
-.contact-content .contact-form p {
-  transform: translate(100px, 100px);
-  background-color: #ffffff;
+.contact-content .buttons {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  top: 50%;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 10;
+}
+.contact-content .buttons button {
+  border: none;
+  background: none;
+  height: 40px;
+  margin: 0px 35%;
+}
+.contact-content .buttons i {
+  color: #ffffff;
+}
+.contact-content #card_container {
+  top: 70px;
+  left: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+.contact-content #card_container div {
+  border-radius: 0px 0px 30px 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 5;
+  word-wrap: break-word;
+  width: 50%;
+  padding: 10px;
+  height: 250px;
+}
+.contact-content #card_container div p {
+  text-align: center;
+  color: #ffffff;
+  font-size: 35px;
+}
+.contact-content #card_container div a {
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 35px;
+  text-decoration: none;
+}
+.contact-content #card_container button {
+  width: 100px;
+  position: relative;
+  left: 25%;
+  top: 15px;
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.contact-content #card_container #card_exit {
+  position: relative;
+  z-index: 20;
+  outline: none;
+  box-shadow: none;
+}
+.contact-content #card_container #card_image {
+  border-radius: 30px 30px 0px 0px;
+  position: relative;
+  padding: 10px;
+  width: 50%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.contact-content #card_container:hover div a i {
+  transition: 0.3s;
+  color: #fcba03;
 }
 
 .home, .about, .contact {

@@ -142,17 +142,96 @@ html, body{
 
   }
 }
-
-
-
 .contact-content{
-  .contact-form{
+  #canvas{
+    height: 100vh;
+    width: 100%;
+  }
+  .buttons{
     position: absolute;
-    background-color: #000000;
-    p{
-      transform: translate(100px,100px);
-      background-color: #ffffff;
+    display: flex;
+    width: 100%;
+    top: 50%;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 10;
+    button{
+      border: none;
+      background: none;
+      height: 40px;
+      margin: 0px 35%;
     }
+    i{
+      color: #ffffff;
+    }
+  }
+
+  #card_container{
+    top: 70px;
+    left: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+
+    div{
+      border-radius: 0px 0px 30px 30px;
+      background-color: rgba(0, 0, 0, 0.50);
+      position: relative;
+      z-index: 5;
+      word-wrap: break-word;
+      width: 50%;
+      padding: 10px;
+      height: 250px;
+
+      p{
+        text-align: center;
+        color: #ffffff;
+        font-size: 35px;
+      }
+
+      a{
+        display: flex;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 35px;
+        text-decoration: none;
+      }
+    }
+    button{
+      width: 100px;
+      position: relative;
+      left: 25%;
+      top: 15px;
+      padding: 10px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+    #card_exit{
+      position: relative;
+      z-index: 20;
+      outline: none;
+      box-shadow: none;
+    }
+
+    #card_image{
+      border-radius: 30px 30px 0px 0px;
+      position: relative;
+      padding: 10px;
+      width: 50%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      height: 300px;
+      background-color: rgba(0, 0, 0, 0.50);
+    }
+  }
+
+  #card_container:hover div a i{
+    transition: 0.3s;
+    color: #fcba03;
   }
 
 }
