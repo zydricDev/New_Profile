@@ -130,11 +130,11 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   top: 100px;
 }
 
-.contact-content #canvas {
+.work-content #canvas {
   height: 100vh;
   width: 100%;
 }
-.contact-content .buttons {
+.work-content .buttons {
   position: absolute;
   display: flex;
   width: 100%;
@@ -143,24 +143,25 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   justify-content: space-around;
   z-index: 10;
 }
-.contact-content .buttons button {
+.work-content .buttons button {
+  outline: none;
   border: none;
   background: none;
   height: 40px;
   margin: 0px 35%;
 }
-.contact-content .buttons i {
+.work-content .buttons i {
   color: #ffffff;
 }
-.contact-content #left-btn:hover i {
+.work-content #left-btn:hover i {
   transition: 0.3s;
   color: #f42442;
 }
-.contact-content #right-btn:hover i {
+.work-content #right-btn:hover i {
   transition: 0.3s;
   color: #f42442;
 }
-.contact-content #card_container {
+.work-content #card_container {
   top: 70px;
   left: 0;
   position: absolute;
@@ -170,7 +171,7 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   width: 100%;
   flex-direction: column;
 }
-.contact-content #card_container div {
+.work-content #card_container div {
   border-radius: 0px 0px 30px 30px;
   background-color: rgba(0, 0, 0, 0.5);
   position: relative;
@@ -180,19 +181,19 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   padding: 10px;
   height: 250px;
 }
-.contact-content #card_container div p {
+.work-content #card_container div p {
   text-align: center;
   color: #ffffff;
   font-size: 35px;
 }
-.contact-content #card_container div a {
+.work-content #card_container div a {
   display: flex;
   justify-content: center;
   color: #ffffff;
   font-size: 35px;
   text-decoration: none;
 }
-.contact-content #card_container button {
+.work-content #card_container button {
   width: 100px;
   position: relative;
   left: 25%;
@@ -202,20 +203,20 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   background: none;
   cursor: pointer;
 }
-.contact-content #card_container #card_exit {
+.work-content #card_container #card_exit {
   position: relative;
   z-index: 20;
   outline: none;
   box-shadow: none;
 }
-.contact-content #card_container #card_exit i {
+.work-content #card_container #card_exit i {
   color: #ffffff;
 }
-.contact-content #card_container #card_exit:hover i {
+.work-content #card_container #card_exit:hover i {
   transition: 0.3s;
   color: #f42442;
 }
-.contact-content #card_container #card_image {
+.work-content #card_container #card_image {
   border-radius: 30px 30px 0px 0px;
   position: relative;
   padding: 10px;
@@ -225,19 +226,19 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   height: 300px;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.contact-content #card_container:hover div a i {
+.work-content #card_container:hover div a i {
   transition: 0.3s;
   color: #fcba03;
 }
 
-.home, .about, .contact {
+.home, .about, .work {
   position: absolute;
   z-index: 1;
   background-color: grey;
   height: 100%;
   width: 100%;
 }
-.home .black-screen, .about .black-screen, .contact .black-screen {
+.home .black-screen, .about .black-screen, .work .black-screen {
   height: 100vh;
   width: 100vw;
   position: absolute;

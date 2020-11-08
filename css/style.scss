@@ -142,7 +142,7 @@ html, body{
 
   }
 }
-.contact-content{
+.work-content{
   #canvas{
     height: 100vh;
     width: 100%;
@@ -156,6 +156,8 @@ html, body{
     justify-content: space-around;
     z-index: 10;
     button{
+      outline: none;
+
       border: none;
       background: none;
       height: 40px;
@@ -253,7 +255,7 @@ html, body{
 
 }
 
-.home, .about, .contact{
+.home, .about, .work{
   position: absolute;
   z-index: 1;
   background-color: grey;
