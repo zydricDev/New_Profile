@@ -231,14 +231,19 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   color: #fcba03;
 }
 
-.home, .about, .work {
+.contact-content #canvas {
+  height: 100vh;
+  width: 100%;
+}
+
+.home, .about, .work, .contact {
   position: absolute;
   z-index: 1;
   background-color: grey;
   height: 100%;
   width: 100%;
 }
-.home .black-screen, .about .black-screen, .work .black-screen {
+.home .black-screen, .about .black-screen, .work .black-screen, .contact .black-screen {
   height: 100vh;
   width: 100vw;
   position: absolute;

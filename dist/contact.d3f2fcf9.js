@@ -117,12 +117,198 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"css/style.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
+})({"js/contact.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var canvas = document.querySelector('canvas');
+var c = canvas.getContext('2d');
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+function onWindowResize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', onWindowResize, false);
+
+var Diamond = /*#__PURE__*/function () {
+  function Diamond(distance, color) {
+    _classCallCheck(this, Diamond);
+
+    this.offset_X = 200;
+    this.offset_Y = 200;
+    this.distance = distance;
+    this.color = color;
+    this.centerX = canvas.width / 2 - 100 + this.offset_X;
+    this.centerY = canvas.height / 2 - 100 + this.offset_Y;
+    this.last = false;
+  }
+
+  _createClass(Diamond, [{
+    key: "draw",
+    value: function draw() {
+      c.beginPath();
+      c.fillStyle = this.color;
+      c.moveTo(this.centerX, this.centerY - this.distance); //top
+
+      c.lineTo(this.centerX + this.distance, this.centerY); //right
+
+      c.lineTo(this.centerX, this.centerY + this.distance); //bottom
+
+      c.lineTo(this.centerX - this.distance, this.centerY); //left
+
+      c.strokeStyle = "transparent";
+      c.stroke();
+      c.fill();
+      c.closePath();
+      this.distance += 1;
+
+      if (this.distance >= 5000) {
+        this.distance = 0;
+        this.last = true;
+      }
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      this.draw();
+    }
+  }]);
+
+  return Diamond;
+}();
+
+var Circle = /*#__PURE__*/function () {
+  function Circle(distance, color) {
+    _classCallCheck(this, Circle);
+
+    this.offset_X = 200;
+    this.offset_Y = 200;
+    this.distance = distance;
+    this.color = color;
+    this.centerX = canvas.width / 2 - 100 + this.offset_X;
+    this.centerY = canvas.height / 2 - 100 + this.offset_Y;
+    this.last = false;
+  }
+
+  _createClass(Circle, [{
+    key: "draw",
+    value: function draw() {
+      c.beginPath();
+      c.fillStyle = this.color;
+      c.arc(this.centerX, this.centerY, this.distance, 0, 2 * Math.PI);
+      c.stroke();
+      c.fill();
+      c.closePath();
+      this.distance += 1;
+
+      if (this.distance >= 5000) {
+        this.distance = 0;
+        this.last = true;
+      }
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      this.draw();
+    }
+  }]);
+
+  return Circle;
+}();
+
+var Boundary = /*#__PURE__*/function () {
+  function Boundary() {
+    _classCallCheck(this, Boundary);
+  }
+
+  _createClass(Boundary, [{
+    key: "draw",
+    value: function draw() {
+      c.beginPath();
+      c.fillStyle = "black";
+      c.moveTo(-100, canvas.height / 2 - 100);
+      c.bezierCurveTo(canvas.width / 2 - 100 - 200, canvas.height / 2 - 200, canvas.width - 600, canvas.height / 2, canvas.width - 100, canvas.height / 2 - 100);
+      c.lineTo(canvas.width - 100, -100);
+      c.lineTo(-100, -100);
+      c.fill();
+      c.stroke();
+      c.closePath();
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      this.draw();
+    }
+  }]);
+
+  return Boundary;
+}();
+
+function setup() {
+  portalAry = [];
+  tracker = [];
+
+  for (var i = 0; i < 100; i++) {
+    if (i % 2 == 0) {
+      portalAry[i] = new Diamond(i * 50, 'red');
+    } else {
+      portalAry[i] = new Diamond(i * 50, 'black');
+    }
+  }
+
+  for (var _i = portalAry.length - 1; _i >= 0; _i--) {
+    tracker.push(_i);
+  }
+
+  circleAry = [];
+  circleTrack = [];
+
+  for (var _i2 = 0; _i2 < 100; _i2++) {
+    if (_i2 % 2 == 0) {
+      circleAry[_i2] = new Circle(_i2 * 50, 'red');
+    } else {
+      circleAry[_i2] = new Circle(_i2 * 50, 'black');
+    }
+  }
+
+  for (var _i3 = circleAry.length - 1; _i3 >= 0; _i3--) {
+    circleTrack.push(_i3);
+  }
+
+  border = new Boundary();
+}
+
+setup();
+
+function animate() {
+  if (document.getElementById('hidden').innerHTML == "Completed") {
+    requestAnimationFrame(animate);
+    c.clearRect(0, 0, innerWidth, innerHeight);
+    c.save();
+    c.translate(100, 100);
+
+    for (var i = 0; i < tracker.length; i++) {
+      if (portalAry[tracker[i]].last == true) {
+        portalAry[tracker[i]].last = false;
+        tracker.push(tracker.shift());
+      }
+
+      portalAry[tracker[i]].update();
+    }
+
+    border.update();
+    c.restore();
+  }
+}
+
+animate();
+},{}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -326,144 +512,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
-var getBundleURL = require('./bundle-url').getBundleURL;
-
-function loadBundlesLazy(bundles) {
-  if (!Array.isArray(bundles)) {
-    bundles = [bundles];
-  }
-
-  var id = bundles[bundles.length - 1];
-
-  try {
-    return Promise.resolve(require(id));
-  } catch (err) {
-    if (err.code === 'MODULE_NOT_FOUND') {
-      return new LazyPromise(function (resolve, reject) {
-        loadBundles(bundles.slice(0, -1)).then(function () {
-          return require(id);
-        }).then(resolve, reject);
-      });
-    }
-
-    throw err;
-  }
-}
-
-function loadBundles(bundles) {
-  return Promise.all(bundles.map(loadBundle));
-}
-
-var bundleLoaders = {};
-
-function registerBundleLoader(type, loader) {
-  bundleLoaders[type] = loader;
-}
-
-module.exports = exports = loadBundlesLazy;
-exports.load = loadBundles;
-exports.register = registerBundleLoader;
-var bundles = {};
-
-function loadBundle(bundle) {
-  var id;
-
-  if (Array.isArray(bundle)) {
-    id = bundle[1];
-    bundle = bundle[0];
-  }
-
-  if (bundles[bundle]) {
-    return bundles[bundle];
-  }
-
-  var type = (bundle.substring(bundle.lastIndexOf('.') + 1, bundle.length) || bundle).toLowerCase();
-  var bundleLoader = bundleLoaders[type];
-
-  if (bundleLoader) {
-    return bundles[bundle] = bundleLoader(getBundleURL() + bundle).then(function (resolved) {
-      if (resolved) {
-        module.bundle.register(id, resolved);
-      }
-
-      return resolved;
-    }).catch(function (e) {
-      delete bundles[bundle];
-      throw e;
-    });
-  }
-}
-
-function LazyPromise(executor) {
-  this.executor = executor;
-  this.promise = null;
-}
-
-LazyPromise.prototype.then = function (onSuccess, onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.then(onSuccess, onError);
-};
-
-LazyPromise.prototype.catch = function (onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.catch(onError);
-};
-},{"./bundle-url":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js":[function(require,module,exports) {
-module.exports = function loadJSBundle(bundle) {
-  return new Promise(function (resolve, reject) {
-    var script = document.createElement('script');
-    script.async = true;
-    script.type = 'text/javascript';
-    script.charset = 'utf-8';
-    script.src = bundle;
-
-    script.onerror = function (e) {
-      script.onerror = script.onload = null;
-      reject(e);
-    };
-
-    script.onload = function () {
-      script.onerror = script.onload = null;
-      resolve();
-    };
-
-    document.getElementsByTagName('head')[0].appendChild(script);
-  });
-};
-},{}],0:[function(require,module,exports) {
-var b=require("../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.register("js",require("../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js"));b.load([]);
-},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0], null)
-//# sourceMappingURL=/style.6b54f5b7.js.map
+},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/contact.js"], null)
+//# sourceMappingURL=/contact.d3f2fcf9.js.map

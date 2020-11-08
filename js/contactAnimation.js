@@ -10,7 +10,7 @@ class Animation_Contact extends Highway.Renderer{
         let status = document.getElementById('hidden');
         let script = document.createElement('script');
         let view = document.getElementById('switch_view');
-        script.setAttribute('src', '/Actual_Cards.f548dcc4.js');
+        script.setAttribute('src', '/contact.d3f2fcf9.js');
         view.appendChild(script);
       }
 
