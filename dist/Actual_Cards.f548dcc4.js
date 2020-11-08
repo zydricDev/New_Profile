@@ -42070,8 +42070,8 @@ function cardContent(number) {
     container.setAttribute('id', 'card_container');
     image.setAttribute('id', 'card_image');
     exit_button.setAttribute('id', 'card_exit');
-    exit_icon.setAttribute('class', 'fa fa-close fa-2x');
-    exit_icon.setAttribute('style', 'color: #ffffff;');
+    exit_icon.setAttribute('class', 'fa fa-close fa-2x'); //exit_icon.setAttribute('style', 'color: #ffffff;');
+
     githubicon.setAttribute('class', 'fa fa-github fa-2x');
     parent.appendChild(container);
     container.appendChild(exit_button);

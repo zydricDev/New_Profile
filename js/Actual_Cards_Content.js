@@ -29,7 +29,7 @@ export function cardContent(number){
     exit_button.setAttribute('id','card_exit');
 
     exit_icon.setAttribute('class', 'fa fa-close fa-2x');
-    exit_icon.setAttribute('style', 'color: #ffffff;');
+    //exit_icon.setAttribute('style', 'color: #ffffff;');
 
     githubicon.setAttribute('class', 'fa fa-github fa-2x');
 

@@ -152,6 +152,14 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
 .contact-content .buttons i {
   color: #ffffff;
 }
+.contact-content #left-btn:hover i {
+  transition: 0.3s;
+  color: #f42442;
+}
+.contact-content #right-btn:hover i {
+  transition: 0.3s;
+  color: #f42442;
+}
 .contact-content #card_container {
   top: 70px;
   left: 0;
@@ -199,6 +207,13 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   z-index: 20;
   outline: none;
   box-shadow: none;
+}
+.contact-content #card_container #card_exit i {
+  color: #ffffff;
+}
+.contact-content #card_container #card_exit:hover i {
+  transition: 0.3s;
+  color: #f42442;
 }
 .contact-content #card_container #card_image {
   border-radius: 30px 30px 0px 0px;
