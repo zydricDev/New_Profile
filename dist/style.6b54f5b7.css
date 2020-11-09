@@ -169,8 +169,8 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
 .about-content #description h1 {
   font-family: "Bungee", cursive;
 }
-.about-content #description h1 a {
-  display: inline;
+.about-content #description a {
+  text-decoration: none;
 }
 .about-content #description p {
   font-family: "Roboto Slab", serif;

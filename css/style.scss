@@ -185,9 +185,10 @@ html, body{
     width: 50em;
     h1{
       font-family: 'Bungee', cursive;
-      a{
-        display: inline;
-      }
+
+    }
+    a{
+      text-decoration: none;
     }
     p{
       font-family: 'Roboto Slab', serif;
