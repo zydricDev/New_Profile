@@ -129,7 +129,7 @@ class Fade_Words {
     if(this.opac >= 1 && this.drawn == false){
       this.drawn = true
     }
-    c.font = this.size+'px Bungee'
+    c.font = this.size+'px Roboto Slab'
     c.fillText(this.ltr, this.x, this.y, 500)
     c.fillStyle = "black";
   }
@@ -578,7 +578,7 @@ function setup(){
   word_offset_X = 100
   word_offset_Y = 50
 
-  description = new Fade_Words(desc, -10+word_offset_X, 150+word_offset_Y, 0, 15, false)
+  description = new Fade_Words(desc, word_offset_X, 150+word_offset_Y, 0, 15, false)
 
   for(var i=0; i<words.length; i++){
 
