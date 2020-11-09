@@ -263,6 +263,11 @@ html, body{
         color: #ffffff;
         font-size: 35px;
         text-decoration: none;
+
+      }
+      a:hover{
+        transition: 0.3s;
+        color: #ff2121;
       }
     }
     button{
@@ -302,10 +307,7 @@ html, body{
     }
   }
 
-  #card_container:hover div a i{
-    transition: 0.3s;
-    color: #fcba03;
-  }
+
 
 }
 

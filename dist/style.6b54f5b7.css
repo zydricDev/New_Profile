@@ -239,6 +239,10 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   font-size: 35px;
   text-decoration: none;
 }
+.work-content #card_container div a:hover {
+  transition: 0.3s;
+  color: #ff2121;
+}
 .work-content #card_container button {
   width: 100px;
   position: relative;
@@ -271,10 +275,6 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   object-position: 50% 25%;
   height: 300px;
   background-color: rgba(0, 0, 0, 0.5);
-}
-.work-content #card_container:hover div a i {
-  transition: 0.3s;
-  color: #fcba03;
 }
 
 .contact-content #canvas {
