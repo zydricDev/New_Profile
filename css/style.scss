@@ -8,7 +8,7 @@
 html, body{
   height: 100%;
   overflow: hidden;
-  //background: linear-gradient(to bottom, #ff6666 0%, #ccff66 100%);
+
   nav{
     position: fixed;
     z-index: 25;
@@ -125,9 +125,52 @@ html, body{
     height: 100vh;
     width: 100%;
   }
+  #extra-content{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    justify-content: center;
+    top: 60%;
+    background-color: #000000;
+    a{
+      font-size: 3em;
+      margin: 0px 25px;
+    }
+    #home_contact{
+      a{
+        text-decoration: none;
+        color: #ffffff;
+      }
+      font-family: 'Roboto Slab', serif;
+      background-color: #000000;
+      border-color: #ffffff;
+      border-style: double;
+      margin: 10px;
+    }
+    #home_contact:hover a{
+      transition: 0.3s;
+      color: #000000;
+    }
+    #home_contact:hover{
+      transition: 0.3s;
+      background-color: #ff1212;
+      border-color: #000000;
+    }
+
+    #home_git{
+      color: #ffffff;
+    }
+    #home_git:hover{
+      transition: 0.3s;
+      color: #ff1212;
+    }
+  }
+
+
+
 }
 .about-content{
-  font-family: 'Bungee', cursive;
+
   #canvas{
     height: 100vh;
     width: 100%;
@@ -139,6 +182,16 @@ html, body{
     padding: 10px 10px;
     left: 200px;
     top: 100px;
+    width: 50em;
+    h1{
+      font-family: 'Bungee', cursive;
+      a{
+        display: inline;
+      }
+    }
+    p{
+      font-family: 'Roboto Slab', serif;
+    }
 
   }
 }
@@ -259,6 +312,28 @@ html, body{
   #canvas{
     height: 100vh;
     width: 100%;
+  }
+  #description{
+    font-family: 'Roboto Slab', serif;
+    position: absolute;
+    color: #FFFFFF;
+    background-color: hsla(0, 0%, 0%, 0.76);
+    padding: 10px 10px;
+    left: 200px;
+    top: 100px;
+  }
+  div{
+    width: 50em;
+  }
+  h1{
+    font-family: 'Bungee', serif;
+  }
+  h4{
+    a:hover{
+      transition: 0.3s;
+      color: #ff1717;
+      text-decoration: none;
+    }
   }
 }
 

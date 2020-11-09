@@ -113,10 +113,46 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   height: 100vh;
   width: 100%;
 }
-
-.about-content {
-  font-family: "Bungee", cursive;
+.home-content #extra-content {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  justify-content: center;
+  top: 60%;
+  background-color: #000000;
 }
+.home-content #extra-content a {
+  font-size: 3em;
+  margin: 0px 25px;
+}
+.home-content #extra-content #home_contact {
+  font-family: "Roboto Slab", serif;
+  background-color: #000000;
+  border-color: #ffffff;
+  border-style: double;
+  margin: 10px;
+}
+.home-content #extra-content #home_contact a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.home-content #extra-content #home_contact:hover a {
+  transition: 0.3s;
+  color: #000000;
+}
+.home-content #extra-content #home_contact:hover {
+  transition: 0.3s;
+  background-color: #ff1212;
+  border-color: #000000;
+}
+.home-content #extra-content #home_git {
+  color: #ffffff;
+}
+.home-content #extra-content #home_git:hover {
+  transition: 0.3s;
+  color: #ff1212;
+}
+
 .about-content #canvas {
   height: 100vh;
   width: 100%;
@@ -128,6 +164,16 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   padding: 10px 10px;
   left: 200px;
   top: 100px;
+  width: 50em;
+}
+.about-content #description h1 {
+  font-family: "Bungee", cursive;
+}
+.about-content #description h1 a {
+  display: inline;
+}
+.about-content #description p {
+  font-family: "Roboto Slab", serif;
 }
 
 .work-content #canvas {
@@ -234,6 +280,26 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
 .contact-content #canvas {
   height: 100vh;
   width: 100%;
+}
+.contact-content #description {
+  font-family: "Roboto Slab", serif;
+  position: absolute;
+  color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.76);
+  padding: 10px 10px;
+  left: 200px;
+  top: 100px;
+}
+.contact-content div {
+  width: 50em;
+}
+.contact-content h1 {
+  font-family: "Bungee", serif;
+}
+.contact-content h4 a:hover {
+  transition: 0.3s;
+  color: #ff1717;
+  text-decoration: none;
 }
 
 .home, .about, .work, .contact {

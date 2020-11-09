@@ -248,7 +248,7 @@ var Fade_Words = /*#__PURE__*/function () {
         this.drawn = true;
       }
 
-      c.font = this.size + 'px Bungee';
+      c.font = this.size + 'px Roboto Slab';
       c.fillText(this.ltr, this.x, this.y, 500);
       c.fillStyle = "black";
     }
@@ -716,7 +716,7 @@ function setup() {
   desc = "Front-End & Web Application Developer";
   word_offset_X = 100;
   word_offset_Y = 50;
-  description = new Fade_Words(desc, -10 + word_offset_X, 150 + word_offset_Y, 0, 15, false);
+  description = new Fade_Words(desc, word_offset_X, 150 + word_offset_Y, 0, 15, false);
 
   for (var i = 0; i < words.length; i++) {
     if (i == 0) {
@@ -887,7 +887,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53953" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50168" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
