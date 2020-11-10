@@ -207,7 +207,7 @@ var Circle = /*#__PURE__*/function () {
       c.closePath();
       this.distance += 1;
 
-      if (this.distance >= 5000) {
+      if (this.distance >= 1500) {
         this.distance = 0;
         this.last = true;
       }
@@ -269,7 +269,7 @@ function setup() {
   circleAry = [];
   circleTrack = [];
 
-  for (var _i2 = 0; _i2 < 100; _i2++) {
+  for (var _i2 = 0; _i2 < 30; _i2++) {
     if (_i2 % 2 == 0) {
       circleAry[_i2] = new Circle(_i2 * 50, 'red');
     } else {
@@ -336,7 +336,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61014" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59569" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

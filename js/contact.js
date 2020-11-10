@@ -36,7 +36,7 @@ class Diamond{
     c.closePath()
 
     this.distance += 1
-    if(this.distance >= 5000){
+    if(this.distance >= 1500){
       this.distance = 0
       this.last = true
     }
@@ -111,7 +111,7 @@ function setup(){
   portalAry = []
   tracker = []
 
-  for(let i=0; i<100; i++){
+  for(let i=0; i<30; i++){
     if(i%2 == 0){
       portalAry[i] = new Diamond(i*50,'red')
     }else{ portalAry[i] = new Diamond(i*50,'black') }

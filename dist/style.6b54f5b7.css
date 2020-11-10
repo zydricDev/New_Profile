@@ -13,7 +13,7 @@ html nav, body nav {
   z-index: 25;
   min-height: 100%;
   width: 80px;
-  background: linear-gradient(to bottom left, #66ccff 16%, #ff6699 84%);
+  background: linear-gradient(to bottom left, #ff483b 16%, #ff1d0d 84%);
 }
 html nav #nav-list li a i, body nav #nav-list li a i {
   color: #000000;
@@ -217,7 +217,7 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   width: 100%;
   flex-direction: column;
 }
-.work-content #card_container div {
+.work-content #card_container #d_container {
   border-radius: 0px 0px 30px 30px;
   background-color: rgba(0, 0, 0, 0.5);
   position: relative;
@@ -227,17 +227,24 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   padding: 10px;
   height: 250px;
 }
-.work-content #card_container div p {
-  text-align: center;
-  color: #ffffff;
-  font-size: 35px;
-}
-.work-content #card_container div a {
+.work-content #card_container #d_container div {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+}
+.work-content #card_container #d_container div a {
   color: #ffffff;
   font-size: 35px;
   text-decoration: none;
+}
+.work-content #card_container #d_container div a:hover {
+  transition: 0.3s;
+  color: #ff2121;
+}
+.work-content #card_container #d_container p {
+  font-family: "Roboto Slab", serif;
+  text-align: center;
+  color: #ffffff;
+  font-size: 35px;
 }
 .work-content #card_container button {
   width: 100px;
@@ -271,10 +278,6 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
   object-position: 50% 25%;
   height: 300px;
   background-color: rgba(0, 0, 0, 0.5);
-}
-.work-content #card_container:hover div a i {
-  transition: 0.3s;
-  color: #fcba03;
 }
 
 .contact-content #canvas {
