@@ -308,7 +308,7 @@ html nav #linkedin-fnt:hover i, body nav #linkedin-fnt:hover i {
 .home, .about, .work, .contact {
   position: absolute;
   z-index: 1;
-  background-color: grey;
+  background-color: #121212;
   height: 100%;
   width: 100%;
 }

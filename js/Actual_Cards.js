@@ -17,7 +17,7 @@ var cardTextures = [
 './card_textures/card2.png',
 './card_textures/card3.png',
 './card_textures/card4.png',
-'./card_textures/card1.png'
+'./card_textures/card4.png'
 ];
 
 
