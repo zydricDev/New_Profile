@@ -42056,31 +42056,38 @@ function cardContent(number) {
     return 0;
   } else {
     var parent = document.getElementById('content');
-    var container = document.createElement('div'); //let image_container = document.createElement('div');
-
+    var container = document.createElement('div');
     var image = document.createElement('img');
     var desc_container = document.createElement('div');
+    desc_container.setAttribute('id', 'd_container');
     var desc = document.createElement('p');
     desc.setAttribute('id', 'c_desc');
     var link = document.createElement('a');
     link.setAttribute('id', 'c_link');
+    var siteLink = document.createElement('a');
+    siteLink.setAttribute('id', 'c_slink');
+    var linkBundle = document.createElement('div');
     var githubicon = document.createElement('i');
+    var webicon = document.createElement('i');
     var exit_button = document.createElement('button');
     var exit_icon = document.createElement('i');
     container.setAttribute('id', 'card_container');
     image.setAttribute('id', 'card_image');
     exit_button.setAttribute('id', 'card_exit');
-    exit_icon.setAttribute('class', 'fa fa-close fa-2x'); //exit_icon.setAttribute('style', 'color: #ffffff;');
-
+    exit_icon.setAttribute('class', 'fa fa-close fa-2x');
     githubicon.setAttribute('class', 'fa fa-github fa-2x');
+    webicon.setAttribute('class', 'fas fa-globe-americas fa-2x');
     parent.appendChild(container);
     container.appendChild(exit_button);
     exit_button.appendChild(exit_icon);
     container.appendChild(image);
     container.appendChild(desc_container);
     desc_container.appendChild(desc);
-    desc_container.appendChild(link);
+    desc_container.appendChild(linkBundle);
+    linkBundle.appendChild(link);
+    linkBundle.appendChild(siteLink);
     link.appendChild(githubicon);
+    siteLink.appendChild(webicon);
     addContent(number);
   }
 }
@@ -42090,38 +42097,45 @@ function addContent(number) {
     var image = document.getElementById('card_image');
     var desc = document.getElementById('c_desc');
     var link = document.getElementById('c_link');
+    var site_link = document.getElementById('c_slink');
 
     if (number == "1") {
       image.src = 'https://i.redd.it/pc00y2gufgb01.jpg';
       desc.innerHTML = 'Laravel Ecommerce Simulator';
-      link.href = "https://www.google.com/";
+      link.href = "http://google.com/";
+      site_link.href = "http://ecom-example.zdev-devsite.com/";
     }
 
     if (number == "2") {
       image.src = 'https://i.imgur.com/X30bDWy.jpeg';
       desc.innerHTML = 'Three.js Card Display';
       link.href = "https://www.google.com/";
+      site_link.href = "http://zdev-devsite.com/work.html";
     }
 
     if (number == "3") {
       image.src = 'https://gameranx.com/wp-content/uploads/2016/06/Dishonored-2-394P-Wallpaper-3-700x394.jpg';
       desc.innerHTML = 'Canvas Landing Page';
       link.href = "https://www.google.com/";
+      site_link.href = "http://zdev-devsite.com";
     }
 
     if (number == "4") {
       image.src = 'https://images2.alphacoders.com/678/678024.png';
       desc.innerHTML = 'TBA';
       link.href = "https://www.google.com/";
+      site_link.href = "http://ecom-example.zdev-devsite.com/";
     }
 
     if (number == "5") {
       image.src = 'https://images8.alphacoders.com/678/678023.jpg';
       desc.innerHTML = 'TBA';
       link.href = "https://www.google.com/";
+      site_link.href = "http://ecom-example.zdev-devsite.com/";
     }
 
     link.target = "_blank";
+    site_link.target = "_blank";
     tl.fromTo(image, 0.5, {
       opacity: 0,
       top: "-1000px"
@@ -44924,7 +44938,7 @@ var card_light = [];
 var static_lights = [];
 var cardModels_p = [];
 var cardModels = [];
-var cardTextures = ['./card_textures/card1.png', './card_textures/card2.png', './card_textures/card3.png', './card_textures/card1.png', './card_textures/card1.png'];
+var cardTextures = ['./card_textures/card1.png', './card_textures/card2.png', './card_textures/card3.png', './card_textures/card4.png', './card_textures/card1.png'];
 
 function indicator(e) {
   if (e) {
@@ -45240,7 +45254,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55450" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64757" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

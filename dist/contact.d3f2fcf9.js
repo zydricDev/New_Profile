@@ -168,7 +168,7 @@ var Diamond = /*#__PURE__*/function () {
       c.closePath();
       this.distance += 1;
 
-      if (this.distance >= 5000) {
+      if (this.distance >= 1500) {
         this.distance = 0;
         this.last = true;
       }
@@ -254,7 +254,7 @@ function setup() {
   portalAry = [];
   tracker = [];
 
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 30; i++) {
     if (i % 2 == 0) {
       portalAry[i] = new Diamond(i * 50, 'red');
     } else {
@@ -336,7 +336,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50168" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59179" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
