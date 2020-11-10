@@ -42100,38 +42100,38 @@ function addContent(number) {
     var site_link = document.getElementById('c_slink');
 
     if (number == "1") {
-      image.src = 'https://i.redd.it/pc00y2gufgb01.jpg';
+      image.src = './images/card1_link.png';
       desc.innerHTML = 'Laravel Ecommerce Simulator';
-      link.href = "http://google.com/";
+      link.href = "https://github.com/zydricDev/ecom";
       site_link.href = "http://ecom-example.zdev-devsite.com/";
     }
 
     if (number == "2") {
-      image.src = 'https://i.imgur.com/X30bDWy.jpeg';
+      image.src = './images/card2_link.png';
       desc.innerHTML = 'Three.js Card Display';
-      link.href = "https://www.google.com/";
+      link.href = "https://github.com/zydricDev/Three_JS";
       site_link.href = "http://zdev-devsite.com/work.html";
     }
 
     if (number == "3") {
-      image.src = 'https://gameranx.com/wp-content/uploads/2016/06/Dishonored-2-394P-Wallpaper-3-700x394.jpg';
+      image.src = './images/card3_link.png';
       desc.innerHTML = 'Canvas Landing Page';
-      link.href = "https://www.google.com/";
+      link.href = "https://github.com/zydricDev/Home_canvas_testing";
       site_link.href = "http://zdev-devsite.com";
     }
 
     if (number == "4") {
       image.src = 'https://images2.alphacoders.com/678/678024.png';
       desc.innerHTML = 'TBA';
-      link.href = "https://www.google.com/";
-      site_link.href = "http://ecom-example.zdev-devsite.com/";
+      link.href = "http://zdev-devsite.com";
+      site_link.href = "http://zdev-devsite.com";
     }
 
     if (number == "5") {
       image.src = 'https://images8.alphacoders.com/678/678023.jpg';
       desc.innerHTML = 'TBA';
-      link.href = "https://www.google.com/";
-      site_link.href = "http://ecom-example.zdev-devsite.com/";
+      link.href = "http://zdev-devsite.com";
+      site_link.href = "http://zdev-devsite.com";
     }
 
     link.target = "_blank";
@@ -45254,7 +45254,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64757" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65161" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

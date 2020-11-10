@@ -72,19 +72,19 @@ function addContent(number){
     let site_link = document.getElementById('c_slink');
 
     if(number=="1"){
-      image.src = 'https://i.redd.it/pc00y2gufgb01.jpg';
+      image.src = './images/card1_link.png';
       desc.innerHTML = 'Laravel Ecommerce Simulator';
       link.href = "https://github.com/zydricDev/ecom";
       site_link.href = "http://ecom-example.zdev-devsite.com/";
     }
     if(number=="2"){
-      image.src = 'https://i.imgur.com/X30bDWy.jpeg';
+      image.src = './images/card2_link.png';
       desc.innerHTML = 'Three.js Card Display';
       link.href = "https://github.com/zydricDev/Three_JS";
       site_link.href = "http://zdev-devsite.com/work.html";
     }
     if(number=="3"){
-      image.src = 'https://gameranx.com/wp-content/uploads/2016/06/Dishonored-2-394P-Wallpaper-3-700x394.jpg';
+      image.src = './images/card3_link.png';
       desc.innerHTML = 'Canvas Landing Page';
       link.href = "https://github.com/zydricDev/Home_canvas_testing";
       site_link.href = "http://zdev-devsite.com";
